@@ -16,8 +16,8 @@ find_package(Qt5 COMPONENTS
 
 add_executable(sharecount
         main.cpp
-        mainwindow.cpp
-        mainwindow.h)
+        MainWindow.cpp
+        MainWindow.h ShareCount.cpp ShareCount.h Modele.cpp Modele.h)
 
 
 target_link_libraries(sharecount
