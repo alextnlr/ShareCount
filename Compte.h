@@ -10,10 +10,13 @@
 class Compte {
 public:
     Compte(std::string nom, std::string prenom, std::string identifiant, std::string mdp);
-    std::string getNom();
-    std::string getPrenom();
-    std::string getIdentifiant();
+    std::string getNom() const;
+    std::string getPrenom() const;
+    std::string getIdentifiant() const;
+    std::string getmdp() const;
     ~Compte();
+
+
 private:
     std::string m_nom;
     std::string m_prenom;
@@ -23,3 +26,4 @@ private:
 
 
 #endif //SHARECOUNT_COMPTE_H
+
