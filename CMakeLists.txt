@@ -6,6 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
+
 find_package(Qt5 COMPONENTS
         Core
         Gui
@@ -17,7 +18,7 @@ add_executable(sharecount
         main.cpp
         MainWindow.cpp
         Compte.cpp
-        MainWindow.h ShareCount.cpp ShareCount.h Modele.cpp Modele.h Compte.h GestionnaireCompte.cpp GestionnaireCompte.h)
+        MainWindow.h ShareCount.cpp ShareCount.h Modele.cpp Modele.h Compte.h)
 
 
 target_link_libraries(sharecount
