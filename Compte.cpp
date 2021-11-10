@@ -1,9 +1,4 @@
-/**
- * \file Compte.cpp
- * \brief Classe gérant les comptes utilisateurs
- * \version 1
- * \date 10 novembre 2021
- */
+
 
 #include "Compte.h"
 
