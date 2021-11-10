@@ -34,3 +34,5 @@ string Compte::getmdp() const {
     return m_mdp;
 }
 
+Compte::~Compte() {}
+
