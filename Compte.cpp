@@ -6,10 +6,10 @@
 
 using namespace std;
 
-Compte::Compte(string nom, string prenom, string identifiant, string mdp) {
+Compte::Compte(string nom, string prenom, int identifiant, string mdp) {
     m_nom = move(nom);
     m_prenom = move(prenom);
-    m_identifiant = move(identifiant);
+    m_identifiant = identifiant;
     m_mdp = move(mdp);
 }
 
@@ -17,7 +17,7 @@ string Compte::getNom() const{
     return m_nom;
 }
 
-string Compte::getIdentifiant() const{
+int Compte::getIdentifiant() const{
     return m_identifiant;
 }
 

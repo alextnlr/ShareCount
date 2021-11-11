@@ -9,6 +9,7 @@
 #include <string>
 #include <map>
 #include "Compte.h"
+#include "FabriqueIdentifiant.h"
 
 class GestionnaireCompte {
 public:
@@ -21,6 +22,7 @@ public:
 private:
     int m_compte_co;
     std::map<int, Compte> m_comptes;
+    FabriqueIdentifiant* m_fabriqueIdentifiant;
 };
 
 

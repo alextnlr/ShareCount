@@ -19,7 +19,7 @@ public:
      * @param identifiant Identifiant unique
      * @param mdp Mot de Passe de connexion
      */
-    Compte(std::string nom, std::string prenom, std::string identifiant, std::string mdp);
+    Compte(std::string nom, std::string prenom, int identifiant, std::string mdp);
 
     /**
      * Retourne le nom associé au compte
@@ -37,7 +37,7 @@ public:
      * Retourne l'identifiant unique associé au compte
      * @return identifiant associé au compte
      */
-    std::string getIdentifiant() const;
+    int getIdentifiant() const;
 
     /**
      * Retourne le mot de passe du compte
@@ -54,7 +54,7 @@ public:
 private:
     std::string m_nom;
     std::string m_prenom;
-    std::string m_identifiant;
+    int m_identifiant;
     std::string m_mdp;
 };
 

@@ -12,7 +12,7 @@ public:
     /**
      * @return instance unique de la classe
      */
-    FabriqueIdentifiant getInstance();
+    static FabriqueIdentifiant* getInstance();
 
     /**
      * Donne accès à l'identifiant unique courrant
@@ -31,8 +31,12 @@ private:
     /**
      * Stocke l'id actuelle
      */
-    int m_idCurrent;
+    static int m_idCurrent;
 
+    /**
+     * Instance
+     */
+    static FabriqueIdentifiant* m_instance{};
 };
 
 

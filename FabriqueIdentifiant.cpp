@@ -13,5 +13,14 @@ int FabriqueIdentifiant::getIdenfiant() {
     return m_idCurrent-1;
 }
 
+FabriqueIdentifiant* FabriqueIdentifiant::getInstance() {
+    if (m_instance == nullptr)
+    {
+        m_instance = new FabriqueIdentifiant();
+    }
+    return m_instance;
+}
 
-
+FabriqueIdentifiant::~FabriqueIdentifiant() {
+    delete m_instance;
+}
