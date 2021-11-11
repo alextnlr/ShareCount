@@ -36,7 +36,7 @@ private:
     /**
      * Instance
      */
-    static FabriqueIdentifiant* m_instance{};
+    static FabriqueIdentifiant* m_instance;
 };
 
 

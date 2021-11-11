@@ -1,5 +1,3 @@
-
-
 #include "Compte.h"
 
 #include <utility>

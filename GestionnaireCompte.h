@@ -1,7 +1,3 @@
-//
-// Created by niciavel on 10/11/2021.
-//
-
 #ifndef SHARECOUNT_GESTIONNAIRECOMPTE_H
 #define SHARECOUNT_GESTIONNAIRECOMPTE_H
 
@@ -13,15 +9,51 @@
 
 class GestionnaireCompte {
 public:
+    /**
+     * Constructeur par défaut
+     */
     GestionnaireCompte();
-    bool verification_client(std::string* informations);
+
+    /**
+     * Création d'un nouveau client
+     * @param informations Informations du client, tableau du nom, prenom, mdp
+     */
     void creation_compte(std::string* informations);
+
+    /**
+     * Connexion du bon compte en fonction des informations
+     * @param informations Informations du client, tableau du nom, prenom, mdp
+     * @return
+     */
     std::string connexion(std::string* informations);
-    Compte compte_connecte();
+
+    /**
+     * Renvoie un pointeur sur le compte actuellement connecté
+     * @return Compte connecté s'il y en a un ou null sinon
+     */
+    Compte* compte_connecte();
     ~GestionnaireCompte();
 private:
+    /**
+     * Vérifie si les informations peuvent être utilisé par un client
+     * @param informations Informations du client, tableau du nom, prenom, mdp
+     * @return Vrai si les informations peuvent être utilisés
+     */
+    bool verification_client(std::string* informations);
+
+    /**
+     * Identifiant du compte connecté
+     */
     int m_compte_co;
-    std::map<int, Compte> m_comptes;
+
+    /**
+     * Comptes enregistrés
+     */
+    std::map<int, Compte*> m_comptes;
+
+    /**
+     * Singleton pour la fabrique d'identifiant unique
+     */
     FabriqueIdentifiant* m_fabriqueIdentifiant;
 };
 
