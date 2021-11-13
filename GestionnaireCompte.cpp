@@ -28,7 +28,7 @@ void GestionnaireCompte::creation_compte(std::string *informations) {
 }
 
 void GestionnaireCompte::connexion(std::string *informations) {
-    
+
 }
 
 Compte* GestionnaireCompte::compte_connecte() {
