@@ -34,7 +34,7 @@ private:
     static int m_idCurrent;
 
     /**
-     * Instance
+     * Instance unique fournit à chaque demande
      */
     static FabriqueIdentifiant* m_instance;
 };
