@@ -25,7 +25,7 @@ public:
      * @param informations Informations du client, tableau du nom, prenom, mdp
      * @return
      */
-    std::string connexion(std::string* informations);
+    void connexion(std::string* informations);
 
     /**
      * Renvoie un pointeur sur le compte actuellement connecté
@@ -47,7 +47,7 @@ private:
     int m_compte_co;
 
     /**
-     * Comptes enregistrés
+     * Map des comptes enregistrés avec comme clé son identifiant int
      */
     std::map<int, Compte*> m_comptes;
 
