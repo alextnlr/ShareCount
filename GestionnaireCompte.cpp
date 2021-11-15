@@ -28,6 +28,19 @@ void GestionnaireCompte::creation_compte(std::string *informations) {
 }
 
 void GestionnaireCompte::connexion(std::string *informations) {
+    if (verification_client(informations)){
+        std::map<int, Compte*>::iterator it = m_comptes.begin(); //Itérateur des comptes enregistrés
+        bool continu = true;
+
+        while (it != m_comptes.end() && continu == true) { //Tant que on a pas trouvé, ou que la map n'est pas finie
+            Compte* current = m_comptes[it->first];
+
+            //Si toutes les infos concordent avec le compte sur lequel on itère
+            if (current->getPrenom() == informations[1] && current->getNom() == informations[0] && current->getmdp() == informations[2]){
+                m_compte_co = current->getIdentifiant();
+            }
+        }
+    }
 
 }
 
