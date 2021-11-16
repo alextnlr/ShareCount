@@ -21,12 +21,16 @@ SOURCES += \
     ShareCount.cpp
     Compte.cpp
     Modele.cpp
+    GestionnaireCompte.cpp
+    FabriqueIdentifiant.cpp
 
 HEADERS += \
     MainWindow.h
     ShareCount.h
     Compte.h
     Modele.h
+    GestionnaireCompte.h
+    FabriqueIdentifiant.h
 
 FORMS += \
     mainwindow.ui
