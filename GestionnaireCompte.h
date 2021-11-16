@@ -62,7 +62,7 @@ private:
     /**
      * Singleton pour la fabrique d'identifiant unique
      */
-    FabriqueIdentifiant* m_fabriqueIdentifiant;
+    FabriqueIdentifiant& m_fabriqueIdentifiant = FabriqueIdentifiant::getInstance();
 };
 
 

@@ -12,31 +12,35 @@ public:
     /**
      * @return instance unique de la classe
      */
-    static FabriqueIdentifiant* getInstance();
+    static FabriqueIdentifiant &getInstance();
 
     /**
      * Donne accès à l'identifiant unique courrant
      * @return id unique
      */
     int getIdenfiant();
-    /**
-     * Destructeur
-     */
-    ~FabriqueIdentifiant();
+
 private:
+
     /**
      * Instance privée unique pour garantir l'unicité de chaque ID
      */
     FabriqueIdentifiant();
+
     /**
      * Stocke l'id actuelle
      */
-    static int m_idCurrent;
+    int m_idCurrent;
 
     /**
      * Instance unique fournit à chaque demande
      */
-    static FabriqueIdentifiant* m_instance;
+    static FabriqueIdentifiant m_instance;
+
+    /**
+     * Destructeur
+     */
+    ~FabriqueIdentifiant();
 };
 
 

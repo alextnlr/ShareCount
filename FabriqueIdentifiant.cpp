@@ -1,5 +1,8 @@
 #include "FabriqueIdentifiant.h"
 
+
+FabriqueIdentifiant FabriqueIdentifiant::m_instance = FabriqueIdentifiant();
+
 FabriqueIdentifiant::FabriqueIdentifiant() {
     m_idCurrent = 1;
 }
@@ -9,14 +12,9 @@ int FabriqueIdentifiant::getIdenfiant() {
     return m_idCurrent-1;
 }
 
-FabriqueIdentifiant* FabriqueIdentifiant::getInstance() {
-    if (m_instance == nullptr)
-    {
-        m_instance = new FabriqueIdentifiant();
-    }
+FabriqueIdentifiant &FabriqueIdentifiant::getInstance() {
     return m_instance;
 }
 
 FabriqueIdentifiant::~FabriqueIdentifiant() {
-    delete m_instance;
 }

@@ -4,7 +4,6 @@ using namespace std;
 
 GestionnaireCompte::GestionnaireCompte() {
     m_compte_co = 0;
-    m_fabriqueIdentifiant = FabriqueIdentifiant::getInstance();
 }
 
 bool GestionnaireCompte::verification_client(std::string *informations) {
@@ -23,7 +22,7 @@ bool GestionnaireCompte::verification_client(std::string *informations) {
 int GestionnaireCompte::creation_compte(std::string *informations) {
     int result = 0;
     if (verification_client(informations)) {
-        int id = m_fabriqueIdentifiant->getIdenfiant();
+        int id = m_fabriqueIdentifiant.getIdenfiant();
         m_comptes [id] = new Compte(informations[0], informations[1], id, informations[2]);
         result = 1;
     }
