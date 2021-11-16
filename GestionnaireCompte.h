@@ -17,8 +17,10 @@ public:
     /**
      * Création d'un nouveau client
      * @param informations Informations du client, tableau du nom, prenom, mdp
+     * @return 0 si les informations saisies étaient incorrects
+     * @return 1 si la création de compte s'est bien passée
      */
-    void creation_compte(std::string* informations);
+    int creation_compte(std::string* informations);
 
     /**
      * Connexion du bon compte en fonction des informations
@@ -34,6 +36,10 @@ public:
      * @return Compte connecté s'il y en a un ou null sinon
      */
     Compte* compte_connecte();
+
+    /**
+     * Destructeur par défaut
+     */
     ~GestionnaireCompte();
 private:
     /**
