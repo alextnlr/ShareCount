@@ -23,9 +23,11 @@ public:
     /**
      * Connexion du bon compte en fonction des informations
      * @param informations Informations du client, tableau du nom, prenom, mdp
-     * @return
+     * @return 0 si la connexion s'est bien passée
+     * @return 1 si le compte n'est pas enregistré
+     * @return 2 si le mot de passe est incorrect
      */
-    void connexion(std::string* informations);
+    int connexion(std::string* informations);
 
     /**
      * Renvoie un pointeur sur le compte actuellement connecté
