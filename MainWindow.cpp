@@ -1,5 +1,8 @@
+#include <QPushButton>
 #include "MainWindow.h"
 #include "ui_mainwindow.h"
+
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -7,10 +10,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->setWindowTitle("ShareCount");
+
+    QPushButton *button = new QPushButton("aled", this);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-

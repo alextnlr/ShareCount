@@ -23,6 +23,7 @@ SOURCES += \
     Modele.cpp
     GestionnaireCompte.cpp
     FabriqueIdentifiant.cpp
+    Vue.cpp
 
 HEADERS += \
     MainWindow.h
@@ -31,6 +32,7 @@ HEADERS += \
     Modele.h
     GestionnaireCompte.h
     FabriqueIdentifiant.h
+    Vue.h
 
 FORMS += \
     mainwindow.ui
