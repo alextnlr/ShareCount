@@ -20,7 +20,7 @@ add_executable(sharecount
         Compte.cpp
         FabriqueIdentifiant.cpp
         GestionnaireCompte.cpp
-        MainWindow.h ShareCount.cpp ShareCount.h Modele.cpp Modele.h Compte.h GestionnaireCompte.h FabriqueIdentifiant.h Vue.cpp Vue.h)
+        MainWindow.h ShareCount.cpp ShareCount.h ObserverPattern.h Compte.h GestionnaireCompte.h FabriqueIdentifiant.h)
 
 
 target_link_libraries(sharecount

@@ -1,13 +1,17 @@
-//
-// Created by niciavel on 03/11/2021.
-//
-
 #ifndef SHARECOUNT_SHARECOUNT_H
 #define SHARECOUNT_SHARECOUNT_H
 
 
-class ShareCount {
+#include "ObserverPattern.h"
+#include "GestionnaireCompte.h"
 
+class ShareCount: public Modele {
+public:
+    int get_aled() const;
+    void inc_aled();
+private:
+    GestionnaireCompte gestionnaireCompte;
+    int aled = 1;
 };
 
 

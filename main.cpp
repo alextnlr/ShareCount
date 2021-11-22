@@ -1,12 +1,12 @@
 #include "MainWindow.h"
 
 #include <QApplication>
-#include <QPushButton>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+    ShareCount shareCount;
+    MainWindow w(shareCount);
     w.show();
     return a.exec();
 }

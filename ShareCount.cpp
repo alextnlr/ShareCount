@@ -1,5 +1,9 @@
-//
-// Created by niciavel on 03/11/2021.
-//
-
 #include "ShareCount.h"
+
+int ShareCount::get_aled() const {
+    return aled;
+}
+
+void ShareCount::inc_aled() {
+    aled++;
+}
