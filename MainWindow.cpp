@@ -13,30 +13,32 @@ MainWindow::MainWindow(ShareCount& shareCount, QWidget *parent)
     this->setWindowTitle("ShareCount");
     m_shareCount.attach(*this);
 
-    m_button = new QPushButton("oui", this);
+    m_button = new QPushButton("send", this);
+    m_button->setGeometry(QRect(QPoint(100, 100), QSize(200, 30)));
     connect(m_button, &QPushButton::released, this, &MainWindow::handleButton);
+
+    m_name = new QLineEdit(this);
+    m_name->setGeometry(QRect(QPoint(100, 50), QSize(200, 30)));
+
+    m_affichage = new QLabel("hello", this);
+    m_affichage->setGeometry(QRect(QPoint(100, 10), QSize(200, 30)));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete m_button;
+    delete m_name;
+    delete m_affichage;
     m_shareCount.detach(*this);
 }
 
 void MainWindow::update() {
-    m_button->setText("bleg");
+    m_affichage->setText(QString::fromStdString(m_shareCount.get_aled()));
 }
 
 void MainWindow::handleButton() {
+    m_shareCount.set_aled(m_name->text().toStdString());
     m_shareCount.notify();
 }
 
-
-/*ButtonNum::ButtonNum(ShareCount &shareCount, QWidget *parent)
-    : QPushButton(parent)
-    , m_sharecount(shareCount)
-{
-    m_sharecount.attach(*this);
-}
-
-*/

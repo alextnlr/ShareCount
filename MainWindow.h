@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include <QLineEdit>
+#include <QLabel>
 #include "ObserverPattern.h"
 #include "ShareCount.h"
 
@@ -25,16 +27,8 @@ private:
     Ui::MainWindow *ui;
     ShareCount& m_shareCount;
     QPushButton *m_button;
+    QLineEdit *m_name;
+    QLabel *m_affichage;
 };
 
-/*class ButtonNum : public QPushButton, public Vue
-{
-    Q_OBJECT
-public:
-    ButtonNum(ShareCount &shareCount, QWidget *parent = nullptr);
-    void update(ShareCount& modele) override;
-    void
-private:
-    ShareCount& m_sharecount;
-};*/
 #endif // MAINWINDOW_H

@@ -7,11 +7,11 @@
 
 class ShareCount: public Modele {
 public:
-    int get_aled() const;
-    void inc_aled();
+    std::string get_aled() const;
+    void set_aled(std::string aled2);
 private:
     GestionnaireCompte gestionnaireCompte;
-    int aled = 1;
+    std::string aled;
 };
 
 
