@@ -16,6 +16,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Compte.cpp \
+    FabriqueIdentifiant.cpp \
+    GestionnaireCompte.cpp \
+    PageConnexion.cpp \
+    ShareCount.cpp \
     main.cpp \
     MainWindow.cpp
     ShareCount.cpp
@@ -26,7 +31,13 @@ SOURCES += \
     Vue.cpp
 
 HEADERS += \
-    MainWindow.h
+    Compte.h \
+    FabriqueIdentifiant.h \
+    GestionnaireCompte.h \
+    MainWindow.h \
+    ObserverPattern.h \
+    PageConnexion.h \
+    ShareCount.h
     ShareCount.h
     Compte.h
     Modele.h
@@ -41,3 +52,7 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    CMakeLists.txt \
+    ShareCount.pro.user
