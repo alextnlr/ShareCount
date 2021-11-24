@@ -74,5 +74,6 @@ void MainWindow::on_pushButtonCreationCompte_clicked()
 
 void MainWindow::on_pushButtonConnexion_clicked()
 {
+    QString nom;
 
 }
