@@ -1,6 +1,11 @@
 #include "ShareCount.h"
-
+#include "gestionnairebdd.h"
 #include <utility>
+
+ShareCount::ShareCount() {
+    GestionnaireBDD gbdd;
+    gbdd.initBdd();
+}
 
 std::string ShareCount::get_aled() const {
     return aled;

@@ -7,6 +7,7 @@ class GestionnaireBDD
 {
 public:
     GestionnaireBDD();
+    void initBdd();
 };
 
 #endif // GESTIONNAIREBDD_H

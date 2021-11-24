@@ -7,6 +7,7 @@
 
 class ShareCount: public Modele {
 public:
+    ShareCount();
     std::string get_aled() const;
     void set_aled(std::string aled2);
     int creerCompte(std::string* informations);
