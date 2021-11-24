@@ -20,7 +20,7 @@ add_executable(sharecount
         Compte.cpp
         FabriqueIdentifiant.cpp
         GestionnaireCompte.cpp
-        MainWindow.h ShareCount.cpp ShareCount.h ObserverPattern.h Compte.h GestionnaireCompte.h FabriqueIdentifiant.h)
+        MainWindow.h ShareCount.cpp ShareCount.h ObserverPattern.h Compte.h GestionnaireCompte.h FabriqueIdentifiant.h PageConnexion.cpp PageConnexion.h)
 
 
 target_link_libraries(sharecount
