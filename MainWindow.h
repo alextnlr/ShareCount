@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QLabel>
+#include <QStackedWidget>
 #include "ObserverPattern.h"
 #include "ShareCount.h"
 
@@ -25,6 +26,9 @@ private slots:
     void handleButton();
 private:
     Ui::MainWindow *ui;
+    QStackedWidget *m_pages;
+    QWidget *page1;
+    QWidget *page2;
     ShareCount& m_shareCount;
     QPushButton *m_button;
     QLineEdit *m_name;
