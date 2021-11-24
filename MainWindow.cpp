@@ -5,6 +5,7 @@
 
 
 
+
 MainWindow::MainWindow(ShareCount& shareCount, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -66,15 +67,22 @@ void MainWindow::update() {
 
 void MainWindow::on_pushButtonCreationCompte_clicked()
 {
-    QString mString;
-    mString = ui->lineEditNom->text();
+    QString name = ui->lineEditNom->text();
+    std::string informations[3];
+    informations[0] = ui->lineEditNom->text().toStdString();
+    informations[1] = ui->lineEditPrenom->text().toStdString();
+    informations[2] = ui->lineEdit_MdP->text().toStdString();
+    m_shareCount.creerCompte(informations);
 
-    ui->pushButtonCreationCompte->setText(mString);
+    ui->pushButtonCreationCompte->setText(name);
 }
 
 void MainWindow::on_pushButtonConnexion_clicked()
 {
-    QString nom;
-    nom = ui->lineEditNom->text();
 
+    std::string informations[3];
+    informations[0] = ui->lineEditNom->text().toStdString();
+    informations[1] = ui->lineEditPrenom->text().toStdString();
+    informations[2] = ui->lineEdit_MdP->text().toStdString();
+    m_shareCount.connexion(informations);
 }
