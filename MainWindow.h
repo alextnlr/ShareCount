@@ -23,7 +23,11 @@ public:
     ~MainWindow() override;
 
 private slots:
-    void handleButton();
+    //void handleButton();
+    void on_pushButtonCreationCompte_clicked();
+
+    void on_pushButtonConnexion_clicked();
+
 private:
     Ui::MainWindow *ui;
     QStackedWidget *m_pages;

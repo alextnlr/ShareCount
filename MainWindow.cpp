@@ -14,7 +14,7 @@ MainWindow::MainWindow(ShareCount& shareCount, QWidget *parent)
     this->setWindowTitle("ShareCount");
     m_shareCount.attach(*this);
 
-    m_pages = new QStackedWidget(this);
+    /*m_pages = new QStackedWidget(this);
     page1 = new QWidget(m_pages);
     page2 = new QWidget(m_pages);
     QVBoxLayout *vlay = new QVBoxLayout(page1);
@@ -45,7 +45,7 @@ MainWindow::MainWindow(ShareCount& shareCount, QWidget *parent)
     m_pages->insertWidget(0, page1);
     m_pages->insertWidget(1, page2);
     m_pages->setCurrentIndex(0);
-    m_pages->show();
+    m_pages->show();*/
 }
 
 MainWindow::~MainWindow()
@@ -64,8 +64,15 @@ void MainWindow::update() {
     m_affichage->setText(QString::fromStdString(m_shareCount.get_aled()));
 }
 
-void MainWindow::handleButton() {
-    m_shareCount.set_aled(m_name->text().toStdString());
-    m_shareCount.notify();
+void MainWindow::on_pushButtonCreationCompte_clicked()
+{
+    QString mString;
+    mString = ui->lineEditNom->text();
+
+    ui->pushButtonCreationCompte->setText(mString);
 }
 
+void MainWindow::on_pushButtonConnexion_clicked()
+{
+
+}
