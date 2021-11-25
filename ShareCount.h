@@ -14,9 +14,8 @@ public:
     ~ShareCount();
 
 private:
-    GestionnaireCompte gestionnaireCompte;
-    std::string aled;
-    GestionnaireBDD* gbdd;
+    GestionnaireBDD* m_gbdd;
+    GestionnaireCompte* m_gestionnaireCompte;
 };
 
 

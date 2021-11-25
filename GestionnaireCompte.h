@@ -6,13 +6,14 @@
 #include <map>
 #include "Compte.h"
 #include "FabriqueIdentifiant.h"
+#include "gestionnairebdd.h"
 
 class GestionnaireCompte {
 public:
     /**
      * Constructeur par défaut
      */
-    GestionnaireCompte();
+    GestionnaireCompte(GestionnaireBDD* gbdd);
 
     /**
      * Création d'un nouveau client
@@ -63,6 +64,8 @@ private:
      * Singleton pour la fabrique d'identifiant unique
      */
     FabriqueIdentifiant& m_fabriqueIdentifiant = FabriqueIdentifiant::getInstance();
+
+    GestionnaireBDD* m_gbdd;
 };
 
 

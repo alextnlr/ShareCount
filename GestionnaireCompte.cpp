@@ -2,7 +2,7 @@
 
 using namespace std;
 
-GestionnaireCompte::GestionnaireCompte() {
+GestionnaireCompte::GestionnaireCompte(GestionnaireBDD* gbdd) : m_gbdd(gbdd) {
     m_compte_co = 0;
 }
 
@@ -24,6 +24,7 @@ int GestionnaireCompte::creation_compte(std::string *informations) {
     if (verification_client(informations)) {
         int id = m_fabriqueIdentifiant.getIdenfiant();
         m_comptes [id] = new Compte(informations[0], informations[1], id, informations[2]);
+        m_gbdd->ajouterCompte(id, informations[0], informations[1], informations[2]);
         result = 1;
     }
     return result;
@@ -64,5 +65,6 @@ GestionnaireCompte::~GestionnaireCompte() {
     for (auto& compte : m_comptes) {
         delete compte.second;
     }
+    delete m_gbdd;
 }
 

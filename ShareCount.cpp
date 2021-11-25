@@ -3,18 +3,21 @@
 #include <utility>
 
 ShareCount::ShareCount() {
-    gbdd = new GestionnaireBDD;
+    m_gbdd = new GestionnaireBDD();
+    m_gestionnaireCompte = new GestionnaireCompte(m_gbdd);
+    //m_gbdd->chercheAlex();
 }
 
 int ShareCount::creerCompte(std::string *informations){
-    return gestionnaireCompte.creation_compte(informations);
+    return m_gestionnaireCompte->creation_compte(informations);
 }
 
 int ShareCount::connexion(std::string *informations){
-    return gestionnaireCompte.connexion(informations);
+    return m_gestionnaireCompte->connexion(informations);
 }
 
 ShareCount::~ShareCount()
 {
-    delete gbdd;
+    delete m_gestionnaireCompte;
+    delete m_gbdd;
 }

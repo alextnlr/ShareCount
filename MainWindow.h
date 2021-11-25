@@ -30,13 +30,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QStackedWidget *m_pages;
-    QWidget *page1;
-    QWidget *page2;
     ShareCount& m_shareCount;
-    QPushButton *m_button;
-    QLineEdit *m_name;
-    QLabel *m_affichage;
 };
 
 #endif // MAINWINDOW_H
