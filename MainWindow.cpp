@@ -102,6 +102,7 @@ void MainWindow::on_pushButtonConnexion_clicked()
     switch (retour){
         case 0:
             textRetour = "Connecté";
+            ui->stackedWidget->setCurrentIndex(1);
         break;
         case 1:
             textRetour = "Compte non trouvé, vérifiez les informations";
