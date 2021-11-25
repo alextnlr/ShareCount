@@ -2,12 +2,15 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>627</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,16 +18,19 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QStackedWidget" name="stackedWidget">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>-1</x>
-      <y>-1</y>
-      <width>801</width>
+      <x>0</x>
+      <y>0</y>
+      <width>761</width>
       <height>601</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QWidget" name="verticalLayoutWidget">
@@ -47,6 +53,9 @@
          </property>
          <item>
           <widget class="QLabel" name="labelNom">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
            <property name="text">
             <string>Nom : </string>
            </property>
@@ -105,6 +114,9 @@
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
           <widget class="QPushButton" name="pushButtonConnexion">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
            <property name="text">
             <string>Connexion</string>
            </property>
@@ -112,6 +124,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="pushButtonCreationCompte">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
            <property name="text">
             <string>Créer Compte</string>
            </property>
@@ -123,14 +138,14 @@
      </widget>
      <widget class="QLabel" name="labelInfo">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>540</y>
+        <y>551</y>
         <width>331</width>
-        <height>31</height>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
@@ -144,6 +159,34 @@
     <widget class="QWidget" name="page_2"/>
    </widget>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuParam_tres">
+    <property name="title">
+     <string>Paramètres</string>
+    </property>
+    <addaction name="actionD_connexion"/>
+   </widget>
+   <addaction name="menuParam_tres"/>
+  </widget>
+  <action name="actionD_connexion">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Déconnexion</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

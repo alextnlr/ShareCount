@@ -14,6 +14,13 @@ MainWindow::MainWindow(ShareCount& shareCount, QWidget *parent)
     ui->setupUi(this);
     this->setWindowTitle("ShareCount");
     m_shareCount.attach(*this);
+    //ui->menuBar->setHidden(true);
+    ui->stackedWidget->setEnabled(true);
+    ui->page->setEnabled(true);
+    ui->page->setHidden(false);
+    ui->stackedWidget->setCurrentIndex(0);
+
+
 
     /*m_pages = new QStackedWidget(this);
     page1 = new QWidget(m_pages);
