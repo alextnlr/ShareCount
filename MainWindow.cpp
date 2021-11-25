@@ -69,7 +69,6 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::update() {
-    m_affichage->setText(QString::fromStdString(m_shareCount.get_aled()));
 }
 
 void MainWindow::on_pushButtonCreationCompte_clicked()
