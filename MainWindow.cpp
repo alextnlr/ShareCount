@@ -67,14 +67,25 @@ void MainWindow::update() {
 
 void MainWindow::on_pushButtonCreationCompte_clicked()
 {
-    QString name = ui->lineEditNom->text();
     std::string informations[3];
     informations[0] = ui->lineEditNom->text().toStdString();
     informations[1] = ui->lineEditPrenom->text().toStdString();
     informations[2] = ui->lineEdit_MdP->text().toStdString();
-    m_shareCount.creerCompte(informations);
+    int retour = m_shareCount.creerCompte(informations);
+    QString textRetour;
 
-    ui->pushButtonCreationCompte->setText(name);
+    ui->labelInfo->setEnabled(true);
+    if (retour == 1){
+        //ui->labelInfo->setText("Compte créé avec succès");
+        textRetour = "Compte créé avec succès";
+        ui->lineEdit_MdP->clear();
+    }
+    if (retour == 0){
+        ui->labelInfo->setText("Erreur lors de la création de compte");
+        textRetour = "Erreur lors de la création de compte";
+    }
+    ui->labelInfo->clear(); //Pour éviter les problèmes si déjà écrit
+    ui->labelInfo->setText(textRetour);
 }
 
 void MainWindow::on_pushButtonConnexion_clicked()
@@ -84,5 +95,23 @@ void MainWindow::on_pushButtonConnexion_clicked()
     informations[0] = ui->lineEditNom->text().toStdString();
     informations[1] = ui->lineEditPrenom->text().toStdString();
     informations[2] = ui->lineEdit_MdP->text().toStdString();
-    m_shareCount.connexion(informations);
+    int retour = m_shareCount.connexion(informations);
+
+    QString textRetour;
+    ui->labelInfo->setEnabled(true);
+    switch (retour){
+        case 0:
+            textRetour = "Connecté";
+        break;
+        case 1:
+            textRetour = "Compte non trouvé, vérifiez les informations";
+            ui->lineEdit_MdP->clear();
+        break;
+        case 2:
+            textRetour = "Compte trouvé, Mot de passe incorrect";
+            ui->lineEdit_MdP->clear();
+        break;
+    }
+    ui->labelInfo->clear(); //Si il est déjà ecrit, pour éviter les problèmes
+    ui->labelInfo->setText(textRetour);
 }

@@ -42,10 +42,12 @@ int GestionnaireCompte::connexion(std::string *informations) {
             if (current->getPrenom() == informations[1] && current->getNom() == informations[0] && current->getmdp() == informations[2]){
                 m_compte_co = current->getIdentifiant();
                 result = 0;
+                continu = false;
             } else{
                 //Si le nom ou le prénom est correct, mais pas le mdp
                 if ((current->getNom() == informations[0] || current->getPrenom() == informations[1]) && current->getmdp() != informations[2]){
                     result = 2;
+                    continu = false;
                 }
             }
         }
