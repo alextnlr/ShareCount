@@ -33,10 +33,16 @@ void GestionnaireBDD::databaseConnect()
 
 void GestionnaireBDD::initBdd()
 {
-        QSqlQuery query("CREATE TABLE if not exists compte (id INTEGER PRIMARY KEY, nom TEXT, prenom TEXT, mdp TEXT)");
+        QSqlQuery queryCompte("CREATE TABLE if not exists compte (id INTEGER PRIMARY KEY, nom TEXT, prenom TEXT, mdp TEXT)");
 
-        if(!query.isActive())
-            qWarning() << "GestionnaireBDD::initBDD - ERROR: " << query.lastError().text();
+        if(!queryCompte.isActive())
+            qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryCompte.lastError().text();
+
+        QSqlQuery queryCagnotte("CREATE TABLE if not exists cagnotte (id_cagnotte INTEGER PRIMARY KEY, nom_cagnotte TEXT, budget_cagnotte INT, id_createur INT, FOREIGN KEY(id_createur) REFERENCES compte(id))");
+
+        if(!queryCagnotte.isActive())
+            qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryCagnotte.lastError().text();
+
 }
 
 void GestionnaireBDD::ajouterCompte(int id, std::string nom, std::string prenom, std::string mdp)
