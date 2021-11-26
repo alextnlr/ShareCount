@@ -81,3 +81,13 @@ void MainWindow::on_pushButtonConnexion_clicked()
     ui->labelInfo->clear(); //Si il est déjà ecrit, pour éviter les problèmes
     ui->labelInfo->setText(textRetour);
 }
+
+void MainWindow::on_actionD_connexion_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+    ui->labelInfo->clear();
+    ui->lineEdit_MdP->clear();
+    ui->lineEditNom->clear();
+    ui->lineEditPrenom->clear();
+}
+

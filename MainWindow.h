@@ -28,6 +28,8 @@ private slots:
 
     void on_pushButtonConnexion_clicked();
 
+    void on_actionD_connexion_triggered();
+
 private:
     Ui::MainWindow *ui;
     ShareCount& m_shareCount;
