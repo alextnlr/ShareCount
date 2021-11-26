@@ -20,6 +20,8 @@ public:
     static void chercheAlex();
     static void hardReset();
     static int lastId();
+    static int nbCompte();
+    static std::vector<std::string*> getCompteBdd();
 private:
     GestionnaireBDD();
     static void databaseConnect();

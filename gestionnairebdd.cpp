@@ -85,3 +85,35 @@ int GestionnaireBDD::lastId()
     return value;
 }
 
+int GestionnaireBDD::nbCompte()
+{
+    QSqlQuery query;
+    int value = 0;
+    if (!query.exec("SELECT COUNT(*) FROM compte"))
+        qWarning() << "GestionnaireBDD::nbCompte - ERROR: " << query.lastError().text();
+    else
+    {
+        while (query.next())
+            value = query.value(0).toInt();
+    }
+    return value;
+}
+
+std::vector<std::string*> GestionnaireBDD::getCompteBdd()
+{
+    QSqlQuery query;
+    std::vector<std::string*> comptes;
+    std::string current[4];
+    if (!query.exec("SELECT id, nom, prenom, mdp FROM compte"))
+        qWarning() << "GestionnaireBDD::nbCompte - ERROR: " << query.lastError().text();
+    else
+    {
+        while (query.next())
+            current[0] = query.value(0).toString().toStdString();
+            current[1] = query.value(1).toString().toStdString();
+            current[2] = query.value(2).toString().toStdString();
+            current[3] = query.value(3).toString().toStdString();
+            comptes.push_back(current);
+    }
+    return comptes;
+}
