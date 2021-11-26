@@ -31,21 +31,14 @@ int GestionnaireCompte::creation_compte(std::string *informations) {
 int GestionnaireCompte::connexion(std::string *informations) {
     int result = 1; // Si on ne trouve aucun compte, on retournera 1
     if (verification_client(informations)){
-        std::map<int, Compte*>::iterator it = m_comptes.begin(); //Itérateur des comptes enregistrés
+        //std::map<int, Compte*>::iterator it = m_comptes.begin(); //Itérateur des comptes enregistrés
         bool continu = true;
 
-        while (it != m_comptes.end() && continu == true) { //Tant que on a pas trouvé, ou que la map n'est pas finie
-            Compte* current = m_comptes[it->first];
-
-            //Si toutes les infos concordent avec le compte sur lequel on itère
-            if (current->getPrenom() == informations[1] && current->getNom() == informations[0] && current->getmdp() == informations[2]){
-                m_compte_co = current->getIdentifiant();
-                result = 0;
-                continu = false;
-            } else{
-                //Si le nom ou le prénom est correct, mais pas le mdp
-                if ((current->getNom() == informations[0] || current->getPrenom() == informations[1]) && current->getmdp() != informations[2]){
-                    result = 2;
+        for (auto const& i : m_comptes){
+            if (continu){
+                if (i.second->getNom() == informations[0] && i.second->getPrenom() == informations[1] && i.second->getmdp() == informations[2]){
+                    m_compte_co = i.second->getIdentifiant();
+                    result = 0;
                     continu = false;
                 }
             }
