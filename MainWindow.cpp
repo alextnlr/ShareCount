@@ -46,8 +46,11 @@ void MainWindow::on_pushButtonCreationCompte_clicked()
         ui->lineEdit_MdP->clear();
     }
     if (retour == 0){
-        ui->labelInfo->setText("Erreur lors de la création de compte");
-        textRetour = "Erreur lors de la création de compte";
+        //ui->labelInfo->setText("Erreur lors de la création de compte");
+        textRetour = "Erreur lors de la création de compte, \n vérifiez que le mot de passe fait plus de 5 caractères";
+    }
+    if (retour == 2){
+        textRetour = "Un compte existe déjà avec ce nom et ce prénom";
     }
     ui->labelInfo->clear(); //Pour éviter les problèmes si déjà écrit
     ui->labelInfo->setText(textRetour);
@@ -84,7 +87,10 @@ void MainWindow::on_pushButtonConnexion_clicked()
 
 void MainWindow::on_actionD_connexion_triggered()
 {
+    // On réaffiche la page de connexion
     ui->stackedWidget->setCurrentIndex(0);
+
+    // On vide tout les champs déjà rempli
     ui->labelInfo->clear();
     ui->lineEdit_MdP->clear();
     ui->lineEditNom->clear();

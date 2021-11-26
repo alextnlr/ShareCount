@@ -20,10 +20,19 @@ bool GestionnaireCompte::verification_client(std::string *informations) {
 int GestionnaireCompte::creation_compte(std::string *informations) {
     int result = 0;
     if (verification_client(informations)) {
-        int id = GestionnaireBDD::lastId()+1; //m_fabriqueIdentifiant.getIdenfiant();
-        m_comptes [id] = new Compte(informations[0], informations[1], id, informations[2]);
-        GestionnaireBDD::ajouterCompte(id, informations[0], informations[1], informations[2]);
-        result = 1;
+
+        //On parcourt toute la liste pour vérifier que les infos ne sont pas déjà utilisé
+        for (auto const& i : m_comptes){
+            if (i.second->getNom() == informations[0] && i.second->getPrenom() == informations[1]){
+                result = 2;
+            }
+        }
+        if (result != 2){ // Si on n'a pas trouvé de compte utilisant ses infos
+            int id = GestionnaireBDD::lastId()+1; //m_fabriqueIdentifiant.getIdenfiant();
+            m_comptes [id] = new Compte(informations[0], informations[1], id, informations[2]);
+            GestionnaireBDD::ajouterCompte(id, informations[0], informations[1], informations[2]);
+            result = 1;
+        }
     }
     return result;
 }

@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QWidget" name="verticalLayoutWidget">
@@ -142,10 +142,10 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>551</y>
-        <width>331</width>
-        <height>20</height>
+        <x>200</x>
+        <y>540</y>
+        <width>371</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
@@ -181,6 +181,9 @@
     <bool>false</bool>
    </property>
    <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="enabled">
     <bool>false</bool>
    </property>
    <property name="text">

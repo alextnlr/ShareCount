@@ -21,6 +21,7 @@ SOURCES += \
     GestionnaireCompte.cpp \
     PageConnexion.cpp \
     ShareCount.cpp \
+    cagnotte.cpp \
     gestionnairebdd.cpp \
     main.cpp \
     MainWindow.cpp
@@ -39,6 +40,7 @@ HEADERS += \
     ObserverPattern.h \
     PageConnexion.h \
     ShareCount.h \
+    cagnotte.h \
     gestionnairebdd.h
     ShareCount.h
     Compte.h
@@ -56,5 +58,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    CMakeLists.txt \
-    ShareCount.pro.user
+    CMakeLists.txt
