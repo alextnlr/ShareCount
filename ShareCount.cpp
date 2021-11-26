@@ -3,6 +3,7 @@
 #include <utility>
 
 ShareCount::ShareCount() {
+    GestionnaireBDD::initInstance();
     m_gestionnaireCompte = new GestionnaireCompte();
     //GestionnaireBDD::hardReset();
     GestionnaireBDD::chercheAlex();

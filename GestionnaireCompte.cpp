@@ -1,4 +1,6 @@
 #include "GestionnaireCompte.h"
+#include <QDebug>
+#include <string>
 
 using namespace std;
 
@@ -64,9 +66,9 @@ GestionnaireCompte::~GestionnaireCompte() {
 }
 
 void GestionnaireCompte::recopieBDD(){
-    std::vector<string*> tab = GestionnaireBDD::getCompteBdd();
+    QVector<QVector<QString>> tab = GestionnaireBDD::getCompteBdd();
     for(const auto& value: tab){
-        m_comptes[stoi(value[0])] = new Compte(value[1], value[2], stoi(value[0]), value[3]);
+        m_comptes[std::stoi(value[0].toStdString())] = new Compte(value[1].toStdString(), value[2].toStdString(), std::stoi(value[0].toStdString()), value[3].toStdString());
     }
 }
 

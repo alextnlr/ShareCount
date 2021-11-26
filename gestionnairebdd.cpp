@@ -10,6 +10,11 @@ GestionnaireBDD::GestionnaireBDD()
     initBdd();
 }
 
+void GestionnaireBDD::initInstance()
+{
+
+}
+
 void GestionnaireBDD::databaseConnect()
 {
     const QString DRIVER("QSQLITE");
@@ -99,21 +104,24 @@ int GestionnaireBDD::nbCompte()
     return value;
 }
 
-std::vector<std::string*> GestionnaireBDD::getCompteBdd()
+QVector<QVector<QString>> GestionnaireBDD::getCompteBdd()
 {
     QSqlQuery query;
-    std::vector<std::string*> comptes;
-    std::string current[4];
+    QVector<QVector<QString>> comptes;
+
     if (!query.exec("SELECT id, nom, prenom, mdp FROM compte"))
         qWarning() << "GestionnaireBDD::nbCompte - ERROR: " << query.lastError().text();
     else
     {
-        while (query.next())
-            current[0] = query.value(0).toString().toStdString();
-            current[1] = query.value(1).toString().toStdString();
-            current[2] = query.value(2).toString().toStdString();
-            current[3] = query.value(3).toString().toStdString();
+        while (query.next()){
+            QVector<QString> current = QVector<QString>(4);
+            current[0] = query.value(0).toString();
+            current[1] = query.value(1).toString();
+            current[2] = query.value(2).toString();
+            current[3] = query.value(3).toString();
             comptes.push_back(current);
+        }
     }
+
     return comptes;
 }

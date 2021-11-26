@@ -21,7 +21,8 @@ public:
     static void hardReset();
     static int lastId();
     static int nbCompte();
-    static std::vector<std::string*> getCompteBdd();
+    static QVector<QVector<QString> > getCompteBdd();
+    static void initInstance();
 private:
     GestionnaireBDD();
     static void databaseConnect();
