@@ -14,7 +14,6 @@ public:
     ~ShareCount();
 
 private:
-    GestionnaireBDD* m_gbdd;
     GestionnaireCompte* m_gestionnaireCompte;
 };
 

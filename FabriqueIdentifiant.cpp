@@ -1,6 +1,4 @@
 #include "FabriqueIdentifiant.h"
-#include "gestionnairebdd.h"
-
 
 FabriqueIdentifiant FabriqueIdentifiant::m_instance = FabriqueIdentifiant();
 

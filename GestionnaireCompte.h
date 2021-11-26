@@ -13,7 +13,7 @@ public:
     /**
      * Constructeur par défaut
      */
-    GestionnaireCompte(GestionnaireBDD* gbdd);
+    GestionnaireCompte();
 
     /**
      * Création d'un nouveau client
@@ -64,8 +64,6 @@ private:
      * Singleton pour la fabrique d'identifiant unique
      */
     FabriqueIdentifiant& m_fabriqueIdentifiant = FabriqueIdentifiant::getInstance();
-
-    GestionnaireBDD* m_gbdd;
 };
 
 

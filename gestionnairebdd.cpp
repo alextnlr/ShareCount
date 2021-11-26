@@ -2,6 +2,8 @@
 #include <QDebug>
 #include "gestionnairebdd.h"
 
+GestionnaireBDD GestionnaireBDD::m_instance = GestionnaireBDD();
+
 GestionnaireBDD::GestionnaireBDD()
 {
     databaseConnect();
@@ -50,7 +52,7 @@ void GestionnaireBDD::chercheAlex()
 {
     QSqlQuery query;
 
-    if(!query.exec("SELECT id FROM compte WHERE prenom='Alex'"))
+    if(!query.exec("SELECT COUNT(*) FROM compte"))
         qWarning() << "GestionnaireBDD::chercheAlex - ERROR: " << query.lastError().text();
     else
     {
@@ -62,10 +64,16 @@ void GestionnaireBDD::chercheAlex()
 int GestionnaireBDD::lastId(){
     QSqlQuery query;
     int value = -1;
-    query.exec("SELECT MAX(id) FROM compte");
-    query.next();
-    value = query.value(0).toInt();
-
+    qDebug()  <<  QSqlDatabase::drivers();
+    if (!query.exec("SELECT MAX(id) FROM compte"))
+        qWarning() << "GestionnaireBDD::lastId - ERROR: " << query.lastError().text();
+    else
+    {
+        while (query.next()){
+            value = query.value(0).toInt();
+            qDebug() << value;
+        }
+    }
     return value;
 }
 

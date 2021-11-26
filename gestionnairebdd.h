@@ -16,12 +16,15 @@
 class GestionnaireBDD
 {
 public:
+    static void ajouterCompte(int id, std::string nom, std::string prenom, std::string mdp);
+    static void chercheAlex();
+    static int lastId();
+private:
     GestionnaireBDD();
     void databaseConnect();
     void initBdd();
-    void ajouterCompte(int id, std::string nom, std::string prenom, std::string mdp);
-    void chercheAlex();
-    static int lastId();
+
+    static GestionnaireBDD m_instance;
 };
 
 #endif // GESTIONNAIREBDD_H

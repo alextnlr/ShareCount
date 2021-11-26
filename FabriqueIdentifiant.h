@@ -6,6 +6,7 @@
 #ifndef SHARECOUNT_FABRIQUEIDENTIFIANT_H
 #define SHARECOUNT_FABRIQUEIDENTIFIANT_H
 
+#include "gestionnairebdd.h"
 
 class FabriqueIdentifiant {
 public:
