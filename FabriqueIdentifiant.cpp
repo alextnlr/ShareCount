@@ -3,7 +3,7 @@
 FabriqueIdentifiant FabriqueIdentifiant::m_instance = FabriqueIdentifiant();
 
 FabriqueIdentifiant::FabriqueIdentifiant() {
-    m_idCurrent = GestionnaireBDD::lastId();
+    m_idCurrent = 0;//GestionnaireBDD::lastId();
 }
 
 int FabriqueIdentifiant::getIdenfiant() {

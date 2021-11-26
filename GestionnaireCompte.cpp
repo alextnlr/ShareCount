@@ -11,18 +11,13 @@ bool GestionnaireCompte::verification_client(std::string *informations) {
     if (informations[0].length() < 1 || informations[1].length() < 1 || informations[2].length() < 5) {
         valid_infos = false;
     }
-    for (auto& compte : m_comptes) {
-        if (informations[0] != compte.second->getNom() && informations[1] != compte.second->getPrenom()) {
-            valid_infos = false;
-        }
-    }
     return valid_infos;
 }
 
 int GestionnaireCompte::creation_compte(std::string *informations) {
     int result = 0;
     if (verification_client(informations)) {
-        int id = m_fabriqueIdentifiant.getIdenfiant();
+        int id = GestionnaireBDD::lastId()+1; //m_fabriqueIdentifiant.getIdenfiant();
         m_comptes [id] = new Compte(informations[0], informations[1], id, informations[2]);
         GestionnaireBDD::ajouterCompte(id, informations[0], informations[1], informations[2]);
         result = 1;

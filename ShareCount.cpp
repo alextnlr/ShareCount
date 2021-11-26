@@ -4,6 +4,7 @@
 
 ShareCount::ShareCount() {
     m_gestionnaireCompte = new GestionnaireCompte();
+    GestionnaireBDD::hardReset();
     GestionnaireBDD::chercheAlex();
 }
 

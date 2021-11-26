@@ -2,7 +2,7 @@
 #include <QDebug>
 #include "gestionnairebdd.h"
 
-GestionnaireBDD GestionnaireBDD::m_instance = GestionnaireBDD();
+GestionnaireBDD* GestionnaireBDD::m_instance = new GestionnaireBDD();
 
 GestionnaireBDD::GestionnaireBDD()
 {
@@ -48,23 +48,31 @@ void GestionnaireBDD::ajouterCompte(int id, std::string nom, std::string prenom,
         qWarning() << "GestionnaireBDD::ajouterCompte - ERROR: " << query.lastError().text();
 }
 
+void GestionnaireBDD::hardReset()
+{
+    QSqlQuery query;
+
+    if(!query.exec("DELETE FROM compte"))
+        qWarning() << "GestionnaireBDD::chercheAlex - ERROR: " << query.lastError().text();
+}
+
 void GestionnaireBDD::chercheAlex()
 {
     QSqlQuery query;
 
-    if(!query.exec("SELECT COUNT(*) FROM compte"))
+    if(!query.exec("SELECT id, nom, prenom, mdp FROM compte"))
         qWarning() << "GestionnaireBDD::chercheAlex - ERROR: " << query.lastError().text();
     else
     {
         while (query.next())
-            qDebug() << "id = " << query.value(0).toInt();
+            qDebug() << query.value(0).toInt() << " " << query.value(1).toString() << " " << query.value(2).toString() << " " << query.value(3).toString();
     }
 }
 
-int GestionnaireBDD::lastId(){
+int GestionnaireBDD::lastId()
+{
     QSqlQuery query;
     int value = -1;
-    qDebug()  <<  QSqlDatabase::drivers();
     if (!query.exec("SELECT MAX(id) FROM compte"))
         qWarning() << "GestionnaireBDD::lastId - ERROR: " << query.lastError().text();
     else

@@ -18,13 +18,14 @@ class GestionnaireBDD
 public:
     static void ajouterCompte(int id, std::string nom, std::string prenom, std::string mdp);
     static void chercheAlex();
+    static void hardReset();
     static int lastId();
 private:
     GestionnaireBDD();
-    void databaseConnect();
-    void initBdd();
+    static void databaseConnect();
+    static void initBdd();
 
-    static GestionnaireBDD m_instance;
+    static GestionnaireBDD* m_instance;
 };
 
 #endif // GESTIONNAIREBDD_H
