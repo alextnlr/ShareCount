@@ -58,3 +58,14 @@ void GestionnaireBDD::chercheAlex()
             qDebug() << "id = " << query.value(0).toInt();
     }
 }
+
+int GestionnaireBDD::lastId(){
+    QSqlQuery query;
+    int value = -1;
+    query.exec("SELECT MAX(id) FROM compte");
+    query.next();
+    value = query.value(0).toInt();
+
+    return value;
+}
+

@@ -21,6 +21,7 @@ public:
     void initBdd();
     void ajouterCompte(int id, std::string nom, std::string prenom, std::string mdp);
     void chercheAlex();
+    static int lastId();
 };
 
 #endif // GESTIONNAIREBDD_H

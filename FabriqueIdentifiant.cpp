@@ -1,10 +1,11 @@
 #include "FabriqueIdentifiant.h"
+#include "gestionnairebdd.h"
 
 
 FabriqueIdentifiant FabriqueIdentifiant::m_instance = FabriqueIdentifiant();
 
 FabriqueIdentifiant::FabriqueIdentifiant() {
-    m_idCurrent = 1;
+    m_idCurrent = GestionnaireBDD::lastId();
 }
 
 int FabriqueIdentifiant::getIdenfiant() {
