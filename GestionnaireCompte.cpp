@@ -4,6 +4,7 @@ using namespace std;
 
 GestionnaireCompte::GestionnaireCompte() {
     m_compte_co = 0;
+    recopieBDD();
 }
 
 bool GestionnaireCompte::verification_client(std::string *informations) {
@@ -59,6 +60,13 @@ Compte* GestionnaireCompte::compte_connecte() {
 GestionnaireCompte::~GestionnaireCompte() {
     for (auto& compte : m_comptes) {
         delete compte.second;
+    }
+}
+
+void GestionnaireCompte::recopieBDD(){
+    std::vector<string*> tab = GestionnaireBDD::getCompteBdd();
+    for(const auto& value: tab){
+        m_comptes[stoi(value[0])] = new Compte(value[1], value[2], stoi(value[0]), value[3]);
     }
 }
 

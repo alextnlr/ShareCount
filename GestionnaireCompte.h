@@ -32,6 +32,8 @@ public:
      */
     int connexion(std::string* informations);
 
+    void recopieBDD();
+
     /**
      * Renvoie un pointeur sur le compte actuellement connecté
      * @return Compte connecté s'il y en a un ou null sinon
