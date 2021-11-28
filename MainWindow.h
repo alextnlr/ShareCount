@@ -36,6 +36,8 @@ private slots:
 
     void on_buttonCreerCagnotte_clicked();
 
+    void on_lineEdit_MdP_returnPressed();
+
 private:
     Ui::MainWindow *ui;
     ShareCount& m_shareCount;

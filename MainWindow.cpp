@@ -115,3 +115,8 @@ void MainWindow::on_buttonCreerCagnotte_clicked()
     m_shareCount.creerCagnotte(result.toStdString());
     m_shareCount.notify();
 }
+
+void MainWindow::on_lineEdit_MdP_returnPressed()
+{
+    on_pushButtonConnexion_clicked();
+}
