@@ -2,13 +2,10 @@
 
 using namespace std;
 
-Cagnotte::Cagnotte(std::string nom, int idCagnotte, Compte* createur)
+Cagnotte::Cagnotte(std::string nom, int idCagnotte, Compte* createur, int budget) : m_nom(nom), m_idCagnotte(idCagnotte), m_budget(budget)
 {
-    m_nom = nom;
-    m_idCagnotte = idCagnotte;
     m_comptes[createur->getIdentifiant()] = createur;
     m_idCreateur = createur->getIdentifiant();
-    m_budget = 0;
 }
 
 void Cagnotte::addParticipant(Compte* compte){

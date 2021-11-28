@@ -40,6 +40,8 @@ public:
      */
     Compte* compte_connecte();
 
+    Compte* getCompte(int i);
+
     /**
      * Destructeur par défaut
      */

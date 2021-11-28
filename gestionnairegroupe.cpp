@@ -2,20 +2,32 @@
 #include <QDebug>
 #include <QString>
 
-GestionnaireGroupe::GestionnaireGroupe()
+GestionnaireGroupe::GestionnaireGroupe(GestionnaireCompte* gestionnaireCompte)
 {
-    nbTemp = 0;
+    recopieBDD(gestionnaireCompte);
 }
 
 void GestionnaireGroupe::addCagnotte(std::string nom, Compte *createur)
 {
-    m_groupes[nbTemp] = new Cagnotte(nom, nbTemp, createur);
-    nbTemp++;
+    int id = GestionnaireBDD::lastIdCagnotte()+1;
+    m_groupes[id] = new Cagnotte(nom, id, createur, 0);
+    GestionnaireBDD::ajouterCagnotte(id, nom, createur->getIdentifiant());
 }
 
 std::map<int, Cagnotte*> GestionnaireGroupe::getGroupesNom()
 {
     return m_groupes;
+}
+
+void GestionnaireGroupe::recopieBDD(GestionnaireCompte* gestionnaireCompte)
+{
+    QVector<QVector<QString>> cagnotteBdd = GestionnaireBDD::getCagnotteBdd();
+
+    for(const auto& value : cagnotteBdd)
+    {
+        int id = std::stoi(value[0].toStdString());
+        m_groupes[id] = new Cagnotte(value[1].toStdString(), id, gestionnaireCompte->getCompte(std::stoi(value[3].toStdString())), std::stoi(value[2].toStdString()));
+    }
 }
 
 GestionnaireGroupe::~GestionnaireGroupe()

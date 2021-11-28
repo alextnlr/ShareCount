@@ -14,7 +14,7 @@ public:
      * @param idCagnotte id unique identifiant la cagnotte
      * @param Createur compte créateur de la cagnotte
      */
-    Cagnotte(std::string nom, int idCagnotte, Compte* createur);
+    Cagnotte(std::string nom, int idCagnotte, Compte* createur, int budget);
 
     /**
      * @brief getNom retourne le nom de la cagnotte

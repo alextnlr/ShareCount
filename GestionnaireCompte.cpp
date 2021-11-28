@@ -28,7 +28,7 @@ int GestionnaireCompte::creation_compte(std::string *informations) {
             }
         }
         if (result != 2){ // Si on n'a pas trouvé de compte utilisant ses infos
-            int id = GestionnaireBDD::lastId()+1; //m_fabriqueIdentifiant.getIdenfiant();
+            int id = GestionnaireBDD::lastIdCompte()+1; //m_fabriqueIdentifiant.getIdenfiant();
             m_comptes [id] = new Compte(informations[0], informations[1], id, informations[2]);
             GestionnaireBDD::ajouterCompte(id, informations[0], informations[1], informations[2]);
             result = 1;
@@ -59,6 +59,11 @@ int GestionnaireCompte::connexion(std::string *informations) {
 
 Compte* GestionnaireCompte::compte_connecte() {
     return m_comptes.at(m_compte_co);
+}
+
+Compte* GestionnaireCompte::getCompte(int i)
+{
+    return m_comptes.at(i);
 }
 
 GestionnaireCompte::~GestionnaireCompte() {

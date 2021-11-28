@@ -17,11 +17,14 @@ class GestionnaireBDD
 {
 public:
     static void ajouterCompte(int id, std::string nom, std::string prenom, std::string mdp);
+    static void ajouterCagnotte(int id_cagnotte, std::string nom, int id_createur);
     static void chercheAlex();
     static void hardReset();
-    static int lastId();
+    static int lastIdCompte();
+    static int lastIdCagnotte();
     static int nbCompte();
     static QVector<QVector<QString> > getCompteBdd();
+    static QVector<QVector<QString> > getCagnotteBdd();
     static void initInstance();
 private:
     GestionnaireBDD();

@@ -89,6 +89,8 @@ void MainWindow::on_pushButtonConnexion_clicked()
     }
     ui->labelInfo->clear(); //Si il est déjà ecrit, pour éviter les problèmes
     ui->labelInfo->setText(textRetour);
+
+    m_shareCount.notify();
 }
 
 void MainWindow::on_actionD_connexion_triggered()

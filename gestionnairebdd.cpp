@@ -43,6 +43,11 @@ void GestionnaireBDD::initBdd()
         if(!queryCagnotte.isActive())
             qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryCagnotte.lastError().text();
 
+        QSqlQuery queryParticipation("CREATE TABLE if not exists partcipation (id INTEGER, id_cagnotte INTEGER, PRIMARY KEY(id, id_cagnotte), FOREIGN KEY(id) REFERENCES compte(id), FOREIGN KEY(id_cagnotte) REFERENCES cagnotte(id_cagnotte))");
+
+        if(!queryParticipation.isActive())
+            qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryCagnotte.lastError().text();
+
 }
 
 void GestionnaireBDD::ajouterCompte(int id, std::string nom, std::string prenom, std::string mdp)
@@ -57,6 +62,29 @@ void GestionnaireBDD::ajouterCompte(int id, std::string nom, std::string prenom,
 
     if(!query.exec())
         qWarning() << "GestionnaireBDD::ajouterCompte - ERROR: " << query.lastError().text();
+}
+
+void GestionnaireBDD::ajouterCagnotte(int id_cagnotte, std::string nom, int id_createur)
+{
+    QSqlQuery queryCagnotte;
+
+    queryCagnotte.prepare("INSERT INTO cagnotte(id_cagnotte, nom_cagnotte, budget_cagnotte, id_createur) VALUES(:id_cagnotte, :nom_cagnotte, :budget_cagnotte, :id_createur)");
+    queryCagnotte.bindValue(":id_cagnotte", id_cagnotte);
+    queryCagnotte.bindValue(":nom_cagnotte", nom.c_str());
+    queryCagnotte.bindValue(":budget_cagnotte", 0);
+    queryCagnotte.bindValue(":id_createur", id_createur);
+
+    if(!queryCagnotte.exec())
+        qWarning() << "GestionnaireBDD::ajouterCagnotte cagnotte - ERROR: " << queryCagnotte.lastError().text();
+
+    QSqlQuery queryParticipation;
+
+    queryParticipation.prepare("INSERT INTO participation(id, id_cagnotte) VALUES(:id, :id_cagnotte)");
+    queryParticipation.bindValue(":id", id_createur);
+    queryParticipation.bindValue(":id_cagnotte", id_cagnotte);
+
+    if(!queryParticipation.exec())
+        qWarning() << "GestionnaireBDD::ajouterCagnotte partcipation - ERROR: " << queryParticipation.lastError().text();
 }
 
 void GestionnaireBDD::hardReset()
@@ -80,17 +108,31 @@ void GestionnaireBDD::chercheAlex()
     }
 }
 
-int GestionnaireBDD::lastId()
+int GestionnaireBDD::lastIdCompte()
 {
     QSqlQuery query;
     int value = -1;
     if (!query.exec("SELECT MAX(id) FROM compte"))
-        qWarning() << "GestionnaireBDD::lastId - ERROR: " << query.lastError().text();
+        qWarning() << "GestionnaireBDD::lastIdCompte - ERROR: " << query.lastError().text();
     else
     {
         while (query.next()){
             value = query.value(0).toInt();
-            qDebug() << value;
+        }
+    }
+    return value;
+}
+
+int GestionnaireBDD::lastIdCagnotte()
+{
+    QSqlQuery query;
+    int value = -1;
+    if (!query.exec("SELECT MAX(id_cagnotte) FROM cagnotte"))
+        qWarning() << "GestionnaireBDD::lastIdCagnotte - ERROR: " << query.lastError().text();
+    else
+    {
+        while (query.next()){
+            value = query.value(0).toInt();
         }
     }
     return value;
@@ -130,4 +172,26 @@ QVector<QVector<QString>> GestionnaireBDD::getCompteBdd()
     }
 
     return comptes;
+}
+
+QVector<QVector<QString>> GestionnaireBDD::getCagnotteBdd()
+{
+    QSqlQuery query;
+    QVector<QVector<QString>> cagnottes;
+
+    if (!query.exec("SELECT id_cagnotte, nom_cagnotte, budget_cagnotte, id_createur FROM cagnotte"))
+        qWarning() << "GestionnaireBDD::getCagnotte - ERROR: " << query.lastError().text();
+    else
+    {
+        while (query.next()){
+            QVector<QString> current = QVector<QString>(4);
+            current[0] = query.value(0).toString();
+            current[1] = query.value(1).toString();
+            current[2] = query.value(2).toString();
+            current[3] = query.value(3).toString();
+            cagnottes.push_back(current);
+        }
+    }
+
+    return cagnottes;
 }

@@ -5,7 +5,7 @@
 ShareCount::ShareCount() {
     GestionnaireBDD::initInstance();
     m_gestionnaireCompte = new GestionnaireCompte();
-    m_gestionnaireGroupe = new GestionnaireGroupe();
+    m_gestionnaireGroupe = new GestionnaireGroupe(m_gestionnaireCompte);
     //GestionnaireBDD::hardReset();
     GestionnaireBDD::chercheAlex();
 }
