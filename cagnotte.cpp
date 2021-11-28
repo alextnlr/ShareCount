@@ -34,3 +34,11 @@ int Cagnotte::getIdCreateur(){
 int Cagnotte::getBudget(){
     return m_budget;
 }
+
+Compte* Cagnotte::getParticipant(int id){
+    return m_comptes[id];
+}
+
+std::map<int, Compte*> Cagnotte::getListeParticipant(){
+    return m_comptes;
+}
