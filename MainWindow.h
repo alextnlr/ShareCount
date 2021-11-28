@@ -6,6 +6,8 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QStackedWidget>
+#include <QInputDialog>
+#include <QDebug>
 #include "ObserverPattern.h"
 #include "ShareCount.h"
 
@@ -29,6 +31,10 @@ private slots:
     void on_pushButtonConnexion_clicked();
 
     void on_actionD_connexion_triggered();
+
+    void on_actionQuitter_triggered();
+
+    void on_buttonCreerCagnotte_clicked();
 
 private:
     Ui::MainWindow *ui;

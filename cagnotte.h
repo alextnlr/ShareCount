@@ -1,5 +1,6 @@
 #ifndef CAGNOTTE_H
 #define CAGNOTTE_H
+#include <QVector>
 #include <iostream>
 #include "Compte.h"
 #include <map>
@@ -9,11 +10,11 @@ class Cagnotte
 public:
     /**
      * @brief Constructeur par défaut
-     * @param nom nom de la cagnoote
+     * @param nom nom de la cagnote
      * @param idCagnotte id unique identifiant la cagnotte
      * @param Createur compte créateur de la cagnotte
      */
-    Cagnotte(std::string nom, int idCagnotte, Compte* Createur);
+    Cagnotte(std::string nom, int idCagnotte, Compte* createur);
 
     /**
      * @brief getNom retourne le nom de la cagnotte
@@ -106,7 +107,6 @@ private:
      * @brief estOuvert Indique si la cagnotte est ouverte ou fermée
      */
     bool estOuvert;
-
 };
 
 #endif // CAGNOTTE_H

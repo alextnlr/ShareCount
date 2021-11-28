@@ -156,7 +156,44 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_2"/>
+    <widget class="QWidget" name="page_2">
+     <widget class="QListWidget" name="groupList">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>40</y>
+        <width>321</width>
+        <height>381</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="goToGroup">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>430</y>
+        <width>321</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Go to group</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="buttonCreerCagnotte">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>50</y>
+        <width>241</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Créer une cagnotte</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -173,6 +210,7 @@
      <string>Paramètres</string>
     </property>
     <addaction name="actionD_connexion"/>
+    <addaction name="actionQuitter"/>
    </widget>
    <addaction name="menuParam_tres"/>
   </widget>
@@ -188,6 +226,11 @@
    </property>
    <property name="text">
     <string>Déconnexion</string>
+   </property>
+  </action>
+  <action name="actionQuitter">
+   <property name="text">
+    <string>Quitter</string>
    </property>
   </action>
  </widget>

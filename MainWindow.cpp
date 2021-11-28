@@ -28,6 +28,12 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::update() {
+    ui->groupList->clear();
+
+    std::map<int, Cagnotte*> cagnottes = m_shareCount.getNomGroupes();
+    for (const auto& nom : cagnottes) {
+        ui->groupList->addItem(QString::fromStdString(nom.second->getNom()));
+    }
 }
 
 void MainWindow::on_pushButtonCreationCompte_clicked()
@@ -97,3 +103,15 @@ void MainWindow::on_actionD_connexion_triggered()
     ui->lineEditPrenom->clear();
 }
 
+
+void MainWindow::on_actionQuitter_triggered()
+{
+    QApplication::quit();
+}
+
+void MainWindow::on_buttonCreerCagnotte_clicked()
+{
+    QString result = QInputDialog::getText(0, "Text input", "Value:");
+    m_shareCount.creerCagnotte(result.toStdString());
+    m_shareCount.notify();
+}

@@ -5,16 +5,20 @@
 #include "ObserverPattern.h"
 #include "GestionnaireCompte.h"
 #include "gestionnairebdd.h"
+#include "gestionnairegroupe.h"
 
 class ShareCount: public Modele {
 public:
     ShareCount();
     int creerCompte(std::string* informations);
     int connexion(std::string* informations);
+    int creerCagnotte(std::string nom);
+    std::map<int, Cagnotte*> getNomGroupes();
     ~ShareCount();
 
 private:
     GestionnaireCompte* m_gestionnaireCompte;
+    GestionnaireGroupe* m_gestionnaireGroupe;
 };
 
 
