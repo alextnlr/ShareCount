@@ -30,12 +30,17 @@ void GestionnaireGroupe::recopieBDD(GestionnaireCompte* gestionnaireCompte)
     }
 }
 
-void GestionnaireGroupe::setGroupCurrent(Cagnotte *cagnotte){
+void GestionnaireGroupe::setGroupCurrent(Cagnotte* cagnotte){
     m_groupCurrent = cagnotte;
 }
 
 Cagnotte* GestionnaireGroupe::getGroupCurrent(){
     return m_groupCurrent;
+}
+
+Cagnotte* GestionnaireGroupe::getCagnotte(int id_cagnotte)
+{
+    return m_groupes[id_cagnotte];
 }
 
 GestionnaireGroupe::~GestionnaireGroupe()

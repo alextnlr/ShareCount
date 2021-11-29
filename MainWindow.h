@@ -43,6 +43,10 @@ private slots:
 
     void on_groupList_itemDoubleClicked(QListWidgetItem *item);
 
+    void on_pushButtonBackCagnotte_clicked();
+
+    void on_pushButtonAddMoney_clicked();
+
 private:
     Ui::MainWindow *ui;
     ShareCount& m_shareCount;

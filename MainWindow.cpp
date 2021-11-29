@@ -32,7 +32,10 @@ void MainWindow::update() {
 
     std::map<int, Cagnotte*> cagnottes = m_shareCount.getNomGroupes();
     for (const auto& nom : cagnottes) {
-        ui->groupList->addItem(QString::fromStdString(nom.second->getNom()));
+        QListWidgetItem* item = new QListWidgetItem;
+        item->setText(QString::fromStdString(nom.second->getNom()));
+        item->setData(Qt::UserRole, nom.second->getIdCagnotte());
+        ui->groupList->addItem(item);
     }
 }
 
@@ -127,11 +130,13 @@ void MainWindow::on_goToGroup_pressed()
 {
     ui->stackedWidget->setCurrentIndex(2);
 
-   ui->groupList->is
-    int budget = m_shareCount.getCurrentGroup()->getBudget();
-    std::string s_Budget = "Budget Actuel" + std::to_string(budget);
+    m_shareCount.setCurrentGroup(ui->groupList->currentItem()->data(Qt::UserRole).toInt());
 
-    ui->labelNomCagnotte->setText(s_Budget);
+    QString nomCagnotte = QString::fromStdString(m_shareCount.getCurrentGroup()->getNom());
+    ui->labelNomCagnotte->setText(nomCagnotte);
+
+    int budget = m_shareCount.getCurrentGroup()->getBudget();
+    ui->labelSommeCagnotte->setText(QString::fromStdString(std::to_string(budget)));
 }
 
 
@@ -139,5 +144,13 @@ void MainWindow::on_groupList_itemDoubleClicked(QListWidgetItem *item)
 {
     //En cas de double clik, on appelle simplement la fonction d'appui sur le bouton
     MainWindow::on_goToGroup_pressed();
+}
 
+void MainWindow::on_pushButtonBackCagnotte_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
 
+void MainWindow::on_pushButtonAddMoney_clicked()
+{
+}

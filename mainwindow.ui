@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QWidget" name="verticalLayoutWidget">
@@ -201,30 +201,84 @@
      </widget>
     </widget>
     <widget class="QWidget" name="page_3">
-     <widget class="QLabel" name="labelNomCagnotte">
+     <widget class="QWidget" name="verticalLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>271</width>
-        <height>17</height>
+        <x>80</x>
+        <y>80</y>
+        <width>331</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Nom de la cagnotte : </string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelNomCagnotte">
+           <property name="text">
+            <string>CagnotteDefault</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Budget de la cagnotte : </string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelSommeCagnotte">
+           <property name="text">
+            <string>NULL</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="pushButtonBackCagnotte">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>51</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
-       <string>Nom de la cagnotte :</string>
+       <string>&lt;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="labelSomme">
+     <widget class="QPushButton" name="pushButtonAddMoney">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>181</width>
-        <height>17</height>
+        <x>520</x>
+        <y>110</y>
+        <width>171</width>
+        <height>81</height>
        </rect>
       </property>
       <property name="text">
-       <string>Somme actuelle :</string>
+       <string>Ajouter Argent</string>
       </property>
      </widget>
     </widget>

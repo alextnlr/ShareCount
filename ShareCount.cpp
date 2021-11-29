@@ -23,8 +23,8 @@ int ShareCount::creerCagnotte(std::string nom) {
     return 0;
 }
 
-void ShareCount::setCurrentGroup(Cagnotte* cagnotte){
-    m_gestionnaireGroupe->setGroupCurrent(cagnotte);
+void ShareCount::setCurrentGroup(int id_cagnotte){
+    m_gestionnaireGroupe->setGroupCurrent(m_gestionnaireGroupe->getCagnotte(id_cagnotte));
 }
 
 Cagnotte* ShareCount::getCurrentGroup(){

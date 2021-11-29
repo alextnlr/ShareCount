@@ -14,7 +14,8 @@ public:
     void addCagnotte(std::string nom, Compte* createur);
     std::map<int, Cagnotte*> getGroupesNom();
     void recopieBDD(GestionnaireCompte *gestionnaireCompte);
-    void setGroupCurrent(Cagnotte* cagnotte);
+    void setGroupCurrent(Cagnotte *cagnotte);
+    Cagnotte* getCagnotte(int id_cagnotte);
     Cagnotte* getGroupCurrent();
     ~GestionnaireGroupe();
 private:
