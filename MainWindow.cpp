@@ -153,4 +153,6 @@ void MainWindow::on_pushButtonBackCagnotte_clicked()
 
 void MainWindow::on_pushButtonAddMoney_clicked()
 {
+    QString result = QInputDialog::getText(0, "Entrer montant", "Value:");
+    m_shareCount.addToCagnotte(result.toInt());
 }

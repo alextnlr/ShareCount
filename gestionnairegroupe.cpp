@@ -43,6 +43,11 @@ Cagnotte* GestionnaireGroupe::getCagnotte(int id_cagnotte)
     return m_groupes[id_cagnotte];
 }
 
+void GestionnaireGroupe::addToCagnotte(int montant)
+{
+    m_groupCurrent->addBudget(montant);
+}
+
 GestionnaireGroupe::~GestionnaireGroupe()
 {
     for(auto& groupe : m_groupes)

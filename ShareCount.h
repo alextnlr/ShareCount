@@ -16,6 +16,7 @@ public:
     std::map<int, Cagnotte*> getNomGroupes();
     void setCurrentGroup(int id_cagnotte);
     Cagnotte* getCurrentGroup();
+    void addToCagnotte(int montant);
     ~ShareCount();
 
 private:

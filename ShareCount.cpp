@@ -36,6 +36,11 @@ std::map<int, Cagnotte*> ShareCount::getNomGroupes()
     return m_gestionnaireGroupe->getGroupesNom();
 }
 
+void ShareCount::addToCagnotte(int montant)
+{
+    m_gestionnaireGroupe->addToCagnotte(montant);
+}
+
 ShareCount::~ShareCount()
 {
     delete m_gestionnaireCompte;

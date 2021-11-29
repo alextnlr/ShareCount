@@ -17,6 +17,7 @@ public:
     void setGroupCurrent(Cagnotte *cagnotte);
     Cagnotte* getCagnotte(int id_cagnotte);
     Cagnotte* getGroupCurrent();
+    void addToCagnotte(int montant);
     ~GestionnaireGroupe();
 private:
     std::map<int, Cagnotte*> m_groupes;
