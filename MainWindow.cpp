@@ -37,6 +37,15 @@ void MainWindow::update() {
         item->setData(Qt::UserRole, nom.second->getIdCagnotte());
         ui->groupList->addItem(item);
     }
+
+    if(m_shareCount.isCagnotteSelected())
+    {
+        QString nomCagnotte = QString::fromStdString(m_shareCount.getCurrentGroup()->getNom());
+        ui->labelNomCagnotte->setText(nomCagnotte);
+
+        int budget = m_shareCount.getCurrentGroup()->getBudget();
+        ui->labelSommeCagnotte->setText(QString::fromStdString(std::to_string(budget)));
+    }
 }
 
 void MainWindow::on_pushButtonCreationCompte_clicked()
@@ -155,4 +164,5 @@ void MainWindow::on_pushButtonAddMoney_clicked()
 {
     QString result = QInputDialog::getText(0, "Entrer montant", "Value:");
     m_shareCount.addToCagnotte(result.toInt());
+    m_shareCount.notify();
 }

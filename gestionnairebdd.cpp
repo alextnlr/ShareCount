@@ -195,3 +195,15 @@ QVector<QVector<QString>> GestionnaireBDD::getCagnotteBdd()
 
     return cagnottes;
 }
+
+void GestionnaireBDD::updateMontantCagnotte(int id_cagnotte, int montant)
+{
+    QSqlQuery query;
+
+    query.prepare("UPDATE cagnotte SET budget_cagnotte=:budget WHERE id_cagnotte=:id");
+    query.bindValue(":budget", montant);
+    query.bindValue(":id", id_cagnotte);
+
+    if(!query.exec())
+        qWarning() << "Gestionnaire::BDD - ERROR " << query.lastError().text();
+}

@@ -17,6 +17,7 @@ public:
     void setCurrentGroup(int id_cagnotte);
     Cagnotte* getCurrentGroup();
     void addToCagnotte(int montant);
+    bool isCagnotteSelected();
     ~ShareCount();
 
 private:

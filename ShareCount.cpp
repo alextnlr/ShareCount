@@ -41,6 +41,11 @@ void ShareCount::addToCagnotte(int montant)
     m_gestionnaireGroupe->addToCagnotte(montant);
 }
 
+bool ShareCount::isCagnotteSelected()
+{
+    return m_gestionnaireGroupe->cagnotteIsSelected();
+}
+
 ShareCount::~ShareCount()
 {
     delete m_gestionnaireCompte;

@@ -25,6 +25,7 @@ public:
     static int nbCompte();
     static QVector<QVector<QString> > getCompteBdd();
     static QVector<QVector<QString> > getCagnotteBdd();
+    static void updateMontantCagnotte(int id_cagnotte, int montant);
     static void initInstance();
 private:
     GestionnaireBDD();

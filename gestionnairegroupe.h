@@ -18,6 +18,7 @@ public:
     Cagnotte* getCagnotte(int id_cagnotte);
     Cagnotte* getGroupCurrent();
     void addToCagnotte(int montant);
+    bool cagnotteIsSelected();
     ~GestionnaireGroupe();
 private:
     std::map<int, Cagnotte*> m_groupes;
@@ -26,7 +27,7 @@ private:
     /**
      * @brief m_groupCurrent groupe actuellement sélectionné
      */
-    Cagnotte* m_groupCurrent;
+    Cagnotte* m_groupCurrent = nullptr;
 };
 
 #endif // GESTIONNAIREGROUPE_H

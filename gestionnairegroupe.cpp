@@ -46,6 +46,15 @@ Cagnotte* GestionnaireGroupe::getCagnotte(int id_cagnotte)
 void GestionnaireGroupe::addToCagnotte(int montant)
 {
     m_groupCurrent->addBudget(montant);
+    GestionnaireBDD::updateMontantCagnotte(m_groupCurrent->getIdCagnotte(), m_groupCurrent->getBudget());
+}
+
+bool GestionnaireGroupe::cagnotteIsSelected()
+{
+    bool selected = true;
+    if(m_groupCurrent == nullptr)
+        selected = false;
+    return selected;
 }
 
 GestionnaireGroupe::~GestionnaireGroupe()
