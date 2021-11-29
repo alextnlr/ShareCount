@@ -10,6 +10,7 @@
 #include <QDebug>
 #include "ObserverPattern.h"
 #include "ShareCount.h"
+#include <QListWidgetItem>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,6 +38,10 @@ private slots:
     void on_buttonCreerCagnotte_clicked();
 
     void on_lineEdit_MdP_returnPressed();
+
+    void on_goToGroup_pressed();
+
+    void on_groupList_itemDoubleClicked(QListWidgetItem *item);
 
 private:
     Ui::MainWindow *ui;

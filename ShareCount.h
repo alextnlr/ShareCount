@@ -14,6 +14,8 @@ public:
     int connexion(std::string* informations);
     int creerCagnotte(std::string nom);
     std::map<int, Cagnotte*> getNomGroupes();
+    void setCurrentGroup(Cagnotte* cagnotte);
+    Cagnotte* getCurrentGroup();
     ~ShareCount();
 
 private:

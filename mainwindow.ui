@@ -200,7 +200,34 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_3"/>
+    <widget class="QWidget" name="page_3">
+     <widget class="QLabel" name="labelNomCagnotte">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>271</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nom de la cagnotte :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelSomme">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>181</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Somme actuelle :</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

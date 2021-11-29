@@ -122,3 +122,22 @@ void MainWindow::on_lineEdit_MdP_returnPressed()
 {
     on_pushButtonConnexion_clicked();
 }
+
+void MainWindow::on_goToGroup_pressed()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+
+   ui->groupList->is
+    int budget = m_shareCount.getCurrentGroup()->getBudget();
+    std::string s_Budget = "Budget Actuel" + std::to_string(budget);
+
+    ui->labelNomCagnotte->setText(s_Budget);
+}
+
+
+void MainWindow::on_groupList_itemDoubleClicked(QListWidgetItem *item)
+{
+    //En cas de double clik, on appelle simplement la fonction d'appui sur le bouton
+    MainWindow::on_goToGroup_pressed();
+
+
