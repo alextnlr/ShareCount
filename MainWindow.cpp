@@ -29,6 +29,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::update() {
     ui->groupList->clear();
+    ui->participantList->clear();
 
     std::map<int, Cagnotte*> cagnottes = m_shareCount.getNomGroupes();
     for (const auto& nom : cagnottes) {
@@ -45,6 +46,14 @@ void MainWindow::update() {
 
         int budget = m_shareCount.getCurrentGroup()->getBudget();
         ui->labelSommeCagnotte->setText(QString::fromStdString(std::to_string(budget)));
+
+        std::map<int, Compte*> compte_co = m_shareCount.getCurrentGroup()->getListeParticipant();
+        for (const auto& compte : compte_co){
+            QListWidgetItem* item = new QListWidgetItem;
+            item->setText(QString::fromStdString(compte.second->getNom()));
+            item->setData(Qt::UserRole, compte.second->getIdentifiant());
+            ui->participantList->addItem(item);
+        }
     }
 }
 
@@ -146,6 +155,7 @@ void MainWindow::on_goToGroup_pressed()
 
     int budget = m_shareCount.getCurrentGroup()->getBudget();
     ui->labelSommeCagnotte->setText(QString::fromStdString(std::to_string(budget)));
+    m_shareCount.notify();
 }
 
 
@@ -179,6 +189,7 @@ void MainWindow::on_pushButtonAddParticipants_clicked()
     int id = m_shareCount.trouverCompte(nom, prenom);
     if (id != -1){
         m_shareCount.addParticipant(m_shareCount.getCompte(id));
+        m_shareCount.notify();
     }
 
 }

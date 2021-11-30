@@ -294,6 +294,16 @@
        <string>Ajouter Participants</string>
       </property>
      </widget>
+     <widget class="QListWidget" name="participantList">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>320</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
