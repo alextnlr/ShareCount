@@ -36,6 +36,10 @@ std::map<int, Cagnotte*> ShareCount::getNomGroupes()
     return m_gestionnaireGroupe->getGroupesNom();
 }
 
+Compte* ShareCount::getCompte(int id){
+    return m_gestionnaireCompte->getCompte(id);
+}
+
 void ShareCount::addToCagnotte(int montant)
 {
     m_gestionnaireGroupe->addToCagnotte(montant);
@@ -44,6 +48,14 @@ void ShareCount::addToCagnotte(int montant)
 bool ShareCount::isCagnotteSelected()
 {
     return m_gestionnaireGroupe->cagnotteIsSelected();
+}
+
+int ShareCount::trouverCompte(std::string nom, std::string prenom){
+    return m_gestionnaireCompte->trouverCompte(nom, prenom);
+}
+
+void ShareCount::addParticipant(Compte *compte){
+    m_gestionnaireGroupe->addParticipant(compte);
 }
 
 ShareCount::~ShareCount()

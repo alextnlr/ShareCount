@@ -57,6 +57,10 @@ bool GestionnaireGroupe::cagnotteIsSelected()
     return selected;
 }
 
+void GestionnaireGroupe::addParticipant(Compte *compte){
+    m_groupCurrent->addParticipant(compte);
+}
+
 GestionnaireGroupe::~GestionnaireGroupe()
 {
     for(auto& groupe : m_groupes)

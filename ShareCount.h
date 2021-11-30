@@ -18,6 +18,9 @@ public:
     Cagnotte* getCurrentGroup();
     void addToCagnotte(int montant);
     bool isCagnotteSelected();
+    int trouverCompte(std::string nom, std::string prenom);
+    void addParticipant(Compte* compte);
+    Compte* getCompte(int id);
     ~ShareCount();
 
 private:

@@ -40,7 +40,21 @@ public:
      */
     Compte* compte_connecte();
 
+    /**
+     * @brief getCompte retrouve un compte par son identifiant
+     * @param i id du compte à chercher
+     * @return Compte trouvé
+     */
     Compte* getCompte(int i);
+
+    /**
+     * @brief trouverCompte Permet de trouver un compte en se basant sur son nom et prénom
+     * @param nom Nom du compte que l'on cherche
+     * @param prenom Prénom du compte que l'on cherche
+     * @return id du compte si il est trouvé
+     * @return -1 si aucun compte n'est trouvé
+     */
+    int trouverCompte(std::string nom, std::string prenom);
 
     /**
      * Destructeur par défaut
@@ -68,6 +82,8 @@ private:
      * Singleton pour la fabrique d'identifiant unique
      */
     FabriqueIdentifiant& m_fabriqueIdentifiant = FabriqueIdentifiant::getInstance();
+
+
 };
 
 

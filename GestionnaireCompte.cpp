@@ -79,3 +79,13 @@ void GestionnaireCompte::recopieBDD(){
     }
 }
 
+int GestionnaireCompte::trouverCompte(std::string nom, std::string prenom){
+    int retour = -1;
+    for (auto const& i : m_comptes){
+        if (i.second->getNom() == nom && i.second->getPrenom() == prenom){
+            retour = i.first;
+        }
+    }
+    return retour;
+}
+

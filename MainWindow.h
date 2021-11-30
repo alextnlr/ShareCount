@@ -47,6 +47,8 @@ private slots:
 
     void on_pushButtonAddMoney_clicked();
 
+    void on_pushButtonAddParticipants_clicked();
+
 private:
     Ui::MainWindow *ui;
     ShareCount& m_shareCount;

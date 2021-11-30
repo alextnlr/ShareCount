@@ -19,6 +19,7 @@ public:
     Cagnotte* getGroupCurrent();
     void addToCagnotte(int montant);
     bool cagnotteIsSelected();
+    void addParticipant(Compte* compte);
     ~GestionnaireGroupe();
 private:
     std::map<int, Cagnotte*> m_groupes;

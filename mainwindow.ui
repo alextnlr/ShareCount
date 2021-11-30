@@ -281,6 +281,19 @@
        <string>Ajouter Argent</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="pushButtonAddParticipants">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>250</y>
+        <width>171</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ajouter Participants</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
