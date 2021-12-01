@@ -17,6 +17,7 @@ class GestionnaireBDD
 {
 public:
     static void ajouterCompte(int id, std::string nom, std::string prenom, std::string mdp);
+    static void ajouterParticipant(int id_cagnotte, int id_participant);
     static void ajouterCagnotte(int id_cagnotte, std::string nom, int id_createur);
     static void chercheAlex();
     static void hardReset();

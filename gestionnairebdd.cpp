@@ -77,10 +77,15 @@ void GestionnaireBDD::ajouterCagnotte(int id_cagnotte, std::string nom, int id_c
     if(!queryCagnotte.exec())
         qWarning() << "GestionnaireBDD::ajouterCagnotte cagnotte - ERROR: " << queryCagnotte.lastError().text();
 
+    GestionnaireBDD::ajouterParticipant(id_cagnotte, id_createur);
+}
+
+void GestionnaireBDD::ajouterParticipant(int id_cagnotte, int id_participant)
+{
     QSqlQuery queryParticipation;
 
     queryParticipation.prepare("INSERT INTO participation(id, id_cagnotte) VALUES(:id, :id_cagnotte)");
-    queryParticipation.bindValue(":id", id_createur);
+    queryParticipation.bindValue(":id", id_participant);
     queryParticipation.bindValue(":id_cagnotte", id_cagnotte);
 
     if(!queryParticipation.exec())

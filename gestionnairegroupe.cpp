@@ -68,6 +68,7 @@ bool GestionnaireGroupe::cagnotteIsSelected()
 
 void GestionnaireGroupe::addParticipant(Compte *compte){
     m_groupCurrent->addParticipant(compte);
+    GestionnaireBDD::ajouterParticipant(m_groupCurrent->getIdCagnotte(), compte->getIdentifiant());
 }
 
 GestionnaireGroupe::~GestionnaireGroupe()
