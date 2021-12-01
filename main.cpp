@@ -7,5 +7,6 @@ int main(int argc, char *argv[])
     ShareCount shareCount;
     MainWindow w(shareCount);
     w.show();
+    a.setWindowIcon(QIcon("/home/timeo/CLionProjects/sharecount/logo.png"));
     return a.exec();
 }

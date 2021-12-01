@@ -42,7 +42,10 @@ Compte* ShareCount::getCompte(int id){
 
 void ShareCount::addToCagnotte(int montant)
 {
-    m_gestionnaireGroupe->addToCagnotte(montant);
+    if (m_gestionnaireCompte->compte_connecte()->getMontant() >= montant){
+        m_gestionnaireGroupe->addToCagnotte(montant);
+        m_gestionnaireCompte->compte_connecte()->withdraw(montant);
+    }
 }
 
 bool ShareCount::isCagnotteSelected()

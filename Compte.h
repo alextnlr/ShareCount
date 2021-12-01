@@ -46,6 +46,25 @@ public:
     std::string getmdp() const;
 
     /**
+     * @brief addMontant
+     * @param montant Montant à ajouter
+     */
+    void addMontant(int montant);
+
+    /**
+     * @brief withdraw Retire une somme d'argent du compte
+     * @param montant montant à retirer
+     */
+    void withdraw(int montant);
+
+    /**
+     * @brief getMontant
+     * @return montant actuel du compte
+     */
+    int getMontant();
+
+
+    /**
      * Destructeur
      */
     ~Compte();
@@ -56,6 +75,7 @@ private:
     std::string m_prenom;
     int m_identifiant;
     std::string m_mdp;
+    int m_montant;
 };
 
 

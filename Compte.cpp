@@ -27,5 +27,17 @@ string Compte::getmdp() const {
     return m_mdp;
 }
 
+void Compte::addMontant(int montant){
+    m_montant += montant;
+}
+
+void Compte::withdraw(int montant){
+    m_montant -= montant;
+}
+
+int Compte::getMontant(){
+    return m_montant;
+}
+
 Compte::~Compte() {}
 
