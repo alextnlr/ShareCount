@@ -71,6 +71,8 @@ public:
      */
     void addBudget(int toAdd);
 
+    bool participe(int id);
+
     /**
      * Destructeur
      */

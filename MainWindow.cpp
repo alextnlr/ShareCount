@@ -33,10 +33,13 @@ void MainWindow::update() {
 
     std::map<int, Cagnotte*> cagnottes = m_shareCount.getNomGroupes();
     for (const auto& nom : cagnottes) {
-        QListWidgetItem* item = new QListWidgetItem;
-        item->setText(QString::fromStdString(nom.second->getNom()));
-        item->setData(Qt::UserRole, nom.second->getIdCagnotte());
-        ui->groupList->addItem(item);
+        if (nom.second->participe(m_shareCount.getCurrentCompte()->getIdentifiant()))
+        {
+            QListWidgetItem* item = new QListWidgetItem;
+            item->setText(QString::fromStdString(nom.second->getNom()));
+            item->setData(Qt::UserRole, nom.second->getIdCagnotte());
+            ui->groupList->addItem(item);
+        }
     }
 
     if(m_shareCount.isCagnotteSelected())

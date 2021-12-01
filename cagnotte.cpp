@@ -40,6 +40,19 @@ std::map<int, Compte*> Cagnotte::getListeParticipant(){
     return m_comptes;
 }
 
+bool Cagnotte::participe(int id){
+    bool result = false;
+    for (const auto& nom : m_comptes){
+        if (!result)
+        {
+            if (nom.second->getIdentifiant() == id){
+                result = true;
+            }
+        }
+    }
+    return result;
+}
+
 Cagnotte::~Cagnotte()
 {
     for(auto& compte : m_comptes)
