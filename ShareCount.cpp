@@ -48,6 +48,11 @@ void ShareCount::addToCagnotte(int montant)
     }
 }
 
+void ShareCount::renameCagnotte(std::string nom)
+{
+    m_gestionnaireGroupe->updateNomCagnotte(nom);
+}
+
 bool ShareCount::isCagnotteSelected()
 {
     return m_gestionnaireGroupe->cagnotteIsSelected();

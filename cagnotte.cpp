@@ -53,6 +53,11 @@ bool Cagnotte::participe(int id){
     return result;
 }
 
+void Cagnotte::setNom(std::string nom)
+{
+    m_nom = nom;
+}
+
 Cagnotte::~Cagnotte()
 {
     for(auto& compte : m_comptes)

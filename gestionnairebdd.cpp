@@ -233,3 +233,15 @@ void GestionnaireBDD::updateMontantCagnotte(int id_cagnotte, int montant)
     if(!query.exec())
         qWarning() << "Gestionnaire::BDD - ERROR " << query.lastError().text();
 }
+
+void GestionnaireBDD::updateNomCagnotte(int id_cagnotte, std::string nom)
+{
+    QSqlQuery query;
+
+    query.prepare("UPDATE cagnotte SET nom_cagnotte=:nom WHERE id_cagnotte=:id");
+    query.bindValue(":nom", QString::fromStdString(nom));
+    query.bindValue(":id", id_cagnotte);
+
+    if(!query.exec())
+        qWarning() << "GestionnaireBDD::updateNomCagnotte - ERROR " << query.lastError().text();
+}

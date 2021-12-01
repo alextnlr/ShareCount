@@ -20,6 +20,7 @@ public:
     void addToCagnotte(int montant);
     bool cagnotteIsSelected();
     void addParticipant(Compte* compte);
+    void updateNomCagnotte(std::string nom);
     ~GestionnaireGroupe();
 private:
     std::map<int, Cagnotte*> m_groupes;

@@ -92,6 +92,13 @@ public:
     static void updateMontantCagnotte(int id_cagnotte, int montant);
 
     /**
+     * @brief updateNomCagnotte Modifie le nom d'une cagnotte dans la BDD
+     * @param id_cagnotte Identifiant unique de la cagnotte
+     * @param nom Nouveau nom de la cagnotte
+     */
+    static void updateNomCagnotte(int id_cagnotte, std::string nom);
+
+    /**
      * @brief initInstance Instancie la BDD
      */
     static void initInstance();

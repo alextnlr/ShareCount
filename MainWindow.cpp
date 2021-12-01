@@ -154,8 +154,9 @@ void MainWindow::on_actionQuitter_triggered()
 
 void MainWindow::on_buttonCreerCagnotte_clicked()
 {
-    QString result = QInputDialog::getText(0, "Text input", "Value:");
-    m_shareCount.creerCagnotte(result.toStdString());
+    QString result = QInputDialog::getText(0, "Entrer le nom de la cagnotte", "Nom:");
+    if(!result.isEmpty())
+        m_shareCount.creerCagnotte(result.toStdString());
     m_shareCount.notify();
 }
 
@@ -225,5 +226,9 @@ void MainWindow::on_actionSupprimer_Cagnotte_triggered()
 
 void MainWindow::on_actionRenommer_Cagnotte_triggered()
 {
+    QString nomResult = QInputDialog::getText(0, "Entrer le nouveau nom :", "Nom :");
+    if(!nomResult.isEmpty())
+        m_shareCount.renameCagnotte(nomResult.toStdString());
 
+    m_shareCount.notify();
 }

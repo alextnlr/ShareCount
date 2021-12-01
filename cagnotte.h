@@ -82,6 +82,12 @@ public:
     bool participe(int id);
 
     /**
+     * @brief setNom Change le nom de la cagnotte
+     * @param nom Nouveau nom
+     */
+    void setNom(std::string nom);
+
+    /**
      * Destructeur
      */
     ~Cagnotte();

@@ -17,6 +17,7 @@ public:
     void setCurrentGroup(int id_cagnotte);
     Cagnotte* getCurrentGroup();
     void addToCagnotte(int montant);
+    void renameCagnotte(std::string nom);
     bool isCagnotteSelected();
     int trouverCompte(std::string nom, std::string prenom);
     void addParticipant(Compte* compte);

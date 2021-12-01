@@ -66,6 +66,12 @@ bool GestionnaireGroupe::cagnotteIsSelected()
     return selected;
 }
 
+void GestionnaireGroupe::updateNomCagnotte(std::string nom)
+{
+    m_groupCurrent->setNom(nom);
+    GestionnaireBDD::updateNomCagnotte(m_groupCurrent->getIdCagnotte(), m_groupCurrent->getNom());
+}
+
 void GestionnaireGroupe::addParticipant(Compte *compte){
     m_groupCurrent->addParticipant(compte);
     GestionnaireBDD::ajouterParticipant(m_groupCurrent->getIdCagnotte(), compte->getIdentifiant());
