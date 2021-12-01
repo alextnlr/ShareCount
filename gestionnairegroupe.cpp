@@ -28,6 +28,15 @@ void GestionnaireGroupe::recopieBDD(GestionnaireCompte* gestionnaireCompte)
         int id = std::stoi(value[0].toStdString());
         m_groupes[id] = new Cagnotte(value[1].toStdString(), id, gestionnaireCompte->getCompte(std::stoi(value[3].toStdString())), std::stoi(value[2].toStdString()));
     }
+
+    for(const auto& groupe : m_groupes)
+    {
+        QVector<int> participant = GestionnaireBDD::getParticipation(groupe.second->getIdCagnotte());
+        for(const auto& idParticipant : participant)
+        {
+            groupe.second->addParticipant(gestionnaireCompte->getCompte(idParticipant));
+        }
+    }
 }
 
 void GestionnaireGroupe::setGroupCurrent(Cagnotte* cagnotte){
