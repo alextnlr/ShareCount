@@ -75,7 +75,7 @@ GestionnaireCompte::~GestionnaireCompte() {
 void GestionnaireCompte::recopieBDD(){
     QVector<QVector<QString>> tab = GestionnaireBDD::getCompteBdd();
     for(const auto& value: tab){
-        m_comptes[std::stoi(value[0].toStdString())] = new Compte(value[1].toStdString(), value[2].toStdString(), std::stoi(value[0].toStdString()), value[3].toStdString());
+        m_comptes[value[0].toInt()] = new Compte(value[1].toStdString(), value[2].toStdString(), value[0].toInt(), value[3].toStdString(), value[4].toInt());
     }
 }
 

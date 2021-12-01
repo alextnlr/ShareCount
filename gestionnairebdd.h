@@ -99,6 +99,13 @@ public:
     static void updateNomCagnotte(int id_cagnotte, std::string nom);
 
     /**
+     * @brief updateMontantCompte Modifie le montant présent sur le compte
+     * @param id_compte Identifiant unique du compte
+     * @param montant Nouveau montant
+     */
+    static void updateMontantCompte(int id_compte, int montant);
+
+    /**
      * @brief initInstance Instancie la BDD
      */
     static void initInstance();

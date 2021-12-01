@@ -9,6 +9,8 @@
 
 #include <iostream>
 
+#include "gestionnairebdd.h"
+
 class Compte {
 public:
 
@@ -19,7 +21,7 @@ public:
      * @param identifiant Identifiant unique
      * @param mdp Mot de Passe de connexion
      */
-    Compte(std::string nom, std::string prenom, int identifiant, std::string mdp);
+    Compte(std::string nom, std::string prenom, int identifiant, std::string mdp, int montant = 0);
 
     /**
      * Retourne le nom associé au compte

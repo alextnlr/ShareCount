@@ -33,7 +33,7 @@ void GestionnaireBDD::databaseConnect()
 
 void GestionnaireBDD::initBdd()
 {
-        QSqlQuery queryCompte("CREATE TABLE if not exists compte (id INTEGER PRIMARY KEY, nom TEXT, prenom TEXT, mdp TEXT)");
+        QSqlQuery queryCompte("CREATE TABLE if not exists compte (id INTEGER PRIMARY KEY, nom TEXT, prenom TEXT, mdp TEXT, montant INTEGER)");
 
         if(!queryCompte.isActive())
             qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryCompte.lastError().text();
@@ -54,11 +54,12 @@ void GestionnaireBDD::ajouterCompte(int id, std::string nom, std::string prenom,
 {
     QSqlQuery query;
 
-    query.prepare("INSERT INTO compte(id, nom, prenom, mdp) VALUES(:id, :nom, :prenom, :mdp)");
+    query.prepare("INSERT INTO compte(id, nom, prenom, mdp, montant) VALUES(:id, :nom, :prenom, :mdp, :montant)");
     query.bindValue(":id", id);
     query.bindValue(":nom", nom.c_str());
     query.bindValue(":prenom", prenom.c_str());
     query.bindValue(":mdp", mdp.c_str());
+    query.bindValue(":montant", 0);
 
     if(!query.exec())
         qWarning() << "GestionnaireBDD::ajouterCompte - ERROR: " << query.lastError().text();
@@ -162,16 +163,17 @@ QVector<QVector<QString>> GestionnaireBDD::getCompteBdd()
     QSqlQuery query;
     QVector<QVector<QString>> comptes;
 
-    if (!query.exec("SELECT id, nom, prenom, mdp FROM compte"))
-        qWarning() << "GestionnaireBDD::nbCompte - ERROR: " << query.lastError().text();
+    if (!query.exec("SELECT id, nom, prenom, mdp, montant FROM compte"))
+        qWarning() << "GestionnaireBDD::getCompte - ERROR: " << query.lastError().text();
     else
     {
         while (query.next()){
-            QVector<QString> current = QVector<QString>(4);
+            QVector<QString> current = QVector<QString>(5);
             current[0] = query.value(0).toString();
             current[1] = query.value(1).toString();
             current[2] = query.value(2).toString();
             current[3] = query.value(3).toString();
+            current[4] = query.value(4).toString();
             comptes.push_back(current);
         }
     }
@@ -244,4 +246,16 @@ void GestionnaireBDD::updateNomCagnotte(int id_cagnotte, std::string nom)
 
     if(!query.exec())
         qWarning() << "GestionnaireBDD::updateNomCagnotte - ERROR " << query.lastError().text();
+}
+
+void GestionnaireBDD::updateMontantCompte(int id_compte, int montant)
+{
+    QSqlQuery query;
+
+    query.prepare("UPDATE compte SET montant=:montant WHERE id=:id");
+    query.bindValue(":montant", montant);
+    query.bindValue(":id", id_compte);
+
+    if(!query.exec())
+        qWarning() << "GestionnaireBDD::updateMontantCompte - ERROR " << query.lastError().text();
 }
