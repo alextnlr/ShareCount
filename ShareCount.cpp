@@ -58,6 +58,10 @@ void ShareCount::addParticipant(Compte *compte){
     m_gestionnaireGroupe->addParticipant(compte);
 }
 
+Compte* ShareCount::getCurrentCompte(){
+    return m_gestionnaireCompte->compte_connecte();
+}
+
 ShareCount::~ShareCount()
 {
     delete m_gestionnaireCompte;

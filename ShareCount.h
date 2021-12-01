@@ -21,6 +21,7 @@ public:
     int trouverCompte(std::string nom, std::string prenom);
     void addParticipant(Compte* compte);
     Compte* getCompte(int id);
+    Compte* getCurrentCompte();
     ~ShareCount();
 
 private:
