@@ -1,3 +1,6 @@
+/**
+ * @brief Objet représantant les cagnottes
+ */
 #ifndef CAGNOTTE_H
 #define CAGNOTTE_H
 #include <QVector>
@@ -71,6 +74,11 @@ public:
      */
     void addBudget(int toAdd);
 
+    /**
+     * @brief participe Permet de savoir si un utilisateur participe ou non à une cagnotte
+     * @param id id du compte à chercher
+     * @return true si on a trouvé le compte
+     */
     bool participe(int id);
 
     /**

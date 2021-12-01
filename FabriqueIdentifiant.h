@@ -1,5 +1,5 @@
 /**
- * Génère des ID qu'on garantit unique, pour identifier les clients
+ * @brief Génère des ID qu'on garantit unique, pour identifier les clients
  * @version 1
  * @date 10 novembre 2021
  */
