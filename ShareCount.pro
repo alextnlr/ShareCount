@@ -20,9 +20,7 @@ RC_ICONS = logo.png
 
 SOURCES += \
     Compte.cpp \
-    FabriqueIdentifiant.cpp \
     GestionnaireCompte.cpp \
-    PageConnexion.cpp \
     ShareCount.cpp \
     cagnotte.cpp \
     demande.cpp \
@@ -32,14 +30,9 @@ SOURCES += \
     MainWindow.cpp
     ShareCount.cpp
     Compte.cpp
-    Modele.cpp
     GestionnaireCompte.cpp
-    FabriqueIdentifiant.cpp
-    Vue.cpp
-
 HEADERS += \
     Compte.h \
-    FabriqueIdentifiant.h \
     GestionnaireCompte.h \
     MainWindow.h \
     ObserverPattern.h \
@@ -51,10 +44,7 @@ HEADERS += \
     gestionnairegroupe.h
     ShareCount.h
     Compte.h
-    Modele.h
     GestionnaireCompte.h
-    FabriqueIdentifiant.h
-    Vue.h
 
 FORMS += \
     mainwindow.ui
