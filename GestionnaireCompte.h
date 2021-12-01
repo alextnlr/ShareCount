@@ -78,11 +78,6 @@ private:
      */
     std::map<int, Compte*> m_comptes;
 
-    /**
-     * Singleton pour la fabrique d'identifiant unique
-     */
-    FabriqueIdentifiant& m_fabriqueIdentifiant = FabriqueIdentifiant::getInstance();
-
 
 };
 

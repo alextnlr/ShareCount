@@ -63,6 +63,17 @@ void MainWindow::update() {
             item->setData(Qt::UserRole, compte.second->getIdentifiant());
             ui->participantList->addItem(item);
         }
+
+        if(m_shareCount.getCurrentCompte()->getIdentifiant() == m_shareCount.getCurrentGroup()->getIdCreateur() && ui->stackedWidget->currentIndex() == 2)
+        {
+            ui->actionSupprimer_Cagnotte->setEnabled(true);
+            ui->actionRenommer_Cagnotte->setEnabled(true);
+        }
+        else
+        {
+            ui->actionSupprimer_Cagnotte->setEnabled(false);
+            ui->actionRenommer_Cagnotte->setEnabled(false);
+        }
     }
 }
 
@@ -177,6 +188,7 @@ void MainWindow::on_groupList_itemDoubleClicked(QListWidgetItem *item)
 void MainWindow::on_pushButtonBackCagnotte_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    m_shareCount.notify();
 }
 
 void MainWindow::on_pushButtonAddMoney_clicked()
@@ -207,6 +219,11 @@ void MainWindow::on_pushButtonAddParticipants_clicked()
 
 
 void MainWindow::on_actionSupprimer_Cagnotte_triggered()
+{
+
+}
+
+void MainWindow::on_actionRenommer_Cagnotte_triggered()
 {
 
 }

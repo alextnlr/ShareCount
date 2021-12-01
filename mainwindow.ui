@@ -327,6 +327,7 @@
     <property name="title">
      <string>Edition</string>
     </property>
+    <addaction name="actionRenommer_Cagnotte"/>
     <addaction name="actionSupprimer_Cagnotte"/>
    </widget>
    <addaction name="menuParam_tres"/>
@@ -357,6 +358,14 @@
    </property>
    <property name="text">
     <string>Supprimer Cagnotte</string>
+   </property>
+  </action>
+  <action name="actionRenommer_Cagnotte">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Renommer Cagnotte</string>
    </property>
   </action>
  </widget>
