@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QWidget" name="verticalLayoutWidget">
@@ -183,7 +183,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Go to group</string>
+       <string>Acceder a la cagnotte</string>
       </property>
      </widget>
      <widget class="QPushButton" name="buttonCreerCagnotte">
@@ -323,7 +323,14 @@
     <addaction name="actionD_connexion"/>
     <addaction name="actionQuitter"/>
    </widget>
+   <widget class="QMenu" name="menuEdition">
+    <property name="title">
+     <string>Edition</string>
+    </property>
+    <addaction name="actionSupprimer_Cagnotte"/>
+   </widget>
    <addaction name="menuParam_tres"/>
+   <addaction name="menuEdition"/>
   </widget>
   <action name="actionD_connexion">
    <property name="checkable">
@@ -342,6 +349,14 @@
   <action name="actionQuitter">
    <property name="text">
     <string>Quitter</string>
+   </property>
+  </action>
+  <action name="actionSupprimer_Cagnotte">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Supprimer Cagnotte</string>
    </property>
   </action>
  </widget>

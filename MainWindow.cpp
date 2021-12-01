@@ -36,7 +36,10 @@ void MainWindow::update() {
         if (nom.second->participe(m_shareCount.getCurrentCompte()->getIdentifiant()))
         {
             QListWidgetItem* item = new QListWidgetItem;
-            item->setText(QString::fromStdString(nom.second->getNom()));
+            if(nom.second->getIdCreateur() == m_shareCount.getCurrentCompte()->getIdentifiant())
+                item->setText(QString::fromStdString(nom.second->getNom()) + " (Createur)");
+            else
+                item->setText(QString::fromStdString(nom.second->getNom()));
             item->setData(Qt::UserRole, nom.second->getIdCagnotte());
             ui->groupList->addItem(item);
         }
@@ -53,7 +56,10 @@ void MainWindow::update() {
         std::map<int, Compte*> compte_co = m_shareCount.getCurrentGroup()->getListeParticipant();
         for (const auto& compte : compte_co){
             QListWidgetItem* item = new QListWidgetItem;
-            item->setText(QString::fromStdString(compte.second->getNom()));
+            if(compte.second->getIdentifiant() == m_shareCount.getCurrentGroup()->getIdCreateur())
+                item->setText(QString::fromStdString(compte.second->getNom()) + " (Createur)");
+            else
+                item->setText(QString::fromStdString(compte.second->getNom()));
             item->setData(Qt::UserRole, compte.second->getIdentifiant());
             ui->participantList->addItem(item);
         }
@@ -199,3 +205,8 @@ void MainWindow::on_pushButtonAddParticipants_clicked()
 
 }
 
+
+void MainWindow::on_actionSupprimer_Cagnotte_triggered()
+{
+
+}
