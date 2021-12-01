@@ -40,6 +40,16 @@ public:
      * @param id_createur id du compte qui à créer la cagnotte
      */
     static void ajouterCagnotte(int id_cagnotte, std::string nom, int id_createur);
+
+    /**
+     * @brief ajouterDemande Ajoute une demande à la bdd
+     * @param id_demande Identifiant unique de la demande
+     * @param montant Montant de la demande
+     * @param id_cagnotte Identifiant de la cagnotte
+     * @param id_compte Identifiant du compte demandant
+     */
+    static void ajouterDemande(int id_demande, int montant, int id_cagnotte, int id_compte);
+
     static void chercheAlex();
 
     /**
@@ -58,6 +68,12 @@ public:
      * @return dernier identifiant de cagnotte connu par la BDD
      */
     static int lastIdCagnotte();
+
+    /**
+     * @brief lastIdDemande
+     * @return dernier identifiant des demandes connus par la BDD
+     */
+    static int lastIdDemande();
 
     /**
      * @brief nbCompte
@@ -84,6 +100,8 @@ public:
      */
     static QVector<int> getParticipation(int id_cagnotte);
 
+    static QVector<QVector<int>> getDemande(int id_cagnotte);
+
     /**
      * @brief updateMontantCagnotte Met à jour le montant de la cagnotte dans la BDD
      * @param id_cagnotte id de la cagnotte à update
@@ -104,6 +122,13 @@ public:
      * @param montant Nouveau montant
      */
     static void updateMontantCompte(int id_compte, int montant);
+
+    /**
+     * @brief updateAcceptationDemande Modifie le nombre d'acceptations pour la demande
+     * @param id_demande Identifiant unique de la demande
+     * @param acceptations Nombre d'acceptations de la demande
+     */
+    static void updateAcceptationDemande(int id_demande, int acceptations);
 
     /**
      * @brief initInstance Instancie la BDD

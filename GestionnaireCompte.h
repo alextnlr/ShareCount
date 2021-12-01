@@ -5,7 +5,6 @@
 #include <string>
 #include <map>
 #include "Compte.h"
-#include "FabriqueIdentifiant.h"
 #include "gestionnairebdd.h"
 
 class GestionnaireCompte {

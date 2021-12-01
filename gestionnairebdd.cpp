@@ -46,7 +46,12 @@ void GestionnaireBDD::initBdd()
         QSqlQuery queryParticipation("CREATE TABLE if not exists participation (id INTEGER, id_cagnotte INTEGER, PRIMARY KEY(id, id_cagnotte), FOREIGN KEY(id) REFERENCES compte(id), FOREIGN KEY(id_cagnotte) REFERENCES cagnotte(id_cagnotte))");
 
         if(!queryParticipation.isActive())
-            qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryCagnotte.lastError().text();
+            qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryParticipation.lastError().text();
+
+        QSqlQuery queryDemande("CREATE TABLE if not exists demande (id_demande INTEGER PRIMARY KEY, montant INTEGER, acceptation INTEGER, id_compte INTEGER, id_cagnotte INTEGER, FOREIGN KEY(id_compte) REFERENCES compte(id), FOREIGN KEY(id_cagnotte) REFERENCES cagnotte(id_cagnotte))");
+
+        if(!queryDemande.isActive())
+            qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryDemande.lastError().text();
 
 }
 
@@ -93,6 +98,21 @@ void GestionnaireBDD::ajouterParticipant(int id_cagnotte, int id_participant)
         qWarning() << "GestionnaireBDD::ajouterCagnotte participation - ERROR: " << queryParticipation.lastError().text();
 }
 
+void GestionnaireBDD::ajouterDemande(int id_demande, int montant, int id_cagnotte, int id_compte)
+{
+    QSqlQuery query;
+
+    query.prepare("INSERT INTO demande (id_demande, montant, acceptation, id_compte, id_cagnotte) VALUES(:id_demande, :montant, :acceptation, :id_compte, :id_cagnotte)");
+    query.bindValue(":id_demande", id_demande);
+    query.bindValue(":montant", montant);
+    query.bindValue(":acceptation", 0);
+    query.bindValue(":id_compte", id_compte);
+    query.bindValue(":id_cagnotte", id_cagnotte);
+
+    if(!query.exec())
+        qWarning() << "GestionnaireBDD::ajouterDemande - ERROR: " << query.lastError().text();
+}
+
 void GestionnaireBDD::hardReset()
 {
     QSqlQuery query;
@@ -134,6 +154,21 @@ int GestionnaireBDD::lastIdCagnotte()
     QSqlQuery query;
     int value = -1;
     if (!query.exec("SELECT MAX(id_cagnotte) FROM cagnotte"))
+        qWarning() << "GestionnaireBDD::lastIdCagnotte - ERROR: " << query.lastError().text();
+    else
+    {
+        while (query.next()){
+            value = query.value(0).toInt();
+        }
+    }
+    return value;
+}
+
+int GestionnaireBDD::lastIdDemande()
+{
+    QSqlQuery query;
+    int value = -1;
+    if (!query.exec("SELECT MAX(id_demande) FROM demande"))
         qWarning() << "GestionnaireBDD::lastIdCagnotte - ERROR: " << query.lastError().text();
     else
     {
@@ -224,6 +259,31 @@ QVector<int> GestionnaireBDD::getParticipation(int id_cagnotte)
     return participants;
 }
 
+QVector<QVector<int>> GestionnaireBDD::getDemande(int id_cagnotte)
+{
+    QSqlQuery query;
+    QVector<QVector<int>> demandes;
+
+    query.prepare("SELECT id_demande, id_compte, montant, acceptation FROM demande WHERE id_cagnotte=:id_cagnotte");
+    query.bindValue(":id_cagnotte", id_cagnotte);
+
+    if (!query.exec())
+        qWarning() << "GestionnaireBDD::getCagnotte - ERROR: " << query.lastError().text();
+    else
+    {
+        while (query.next()){
+            QVector<int> current = QVector<int>(4);
+            current[0] = query.value(0).toInt();
+            current[1] = query.value(1).toInt();
+            current[2] = query.value(2).toInt();
+            current[3] = query.value(3).toInt();
+            demandes.push_back(current);
+        }
+    }
+
+    return demandes;
+}
+
 void GestionnaireBDD::updateMontantCagnotte(int id_cagnotte, int montant)
 {
     QSqlQuery query;
@@ -258,4 +318,16 @@ void GestionnaireBDD::updateMontantCompte(int id_compte, int montant)
 
     if(!query.exec())
         qWarning() << "GestionnaireBDD::updateMontantCompte - ERROR " << query.lastError().text();
+}
+
+void GestionnaireBDD::updateAcceptationDemande(int id_demande, int acceptations)
+{
+    QSqlQuery query;
+
+    query.prepare("UPDATE demande SET acceptation=:acceptation WHERE id_demande=:id_demande");
+    query.bindValue(":acceptation", acceptations);
+    query.bindValue(":id_demande", id_demande);
+
+    if(!query.exec())
+        qWarning() << "GestionnaireBDD::updateAcceptationDemande - ERROR " << query.lastError().text();
 }
