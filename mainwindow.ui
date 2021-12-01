@@ -163,117 +163,50 @@
      </widget>
     </widget>
     <widget class="QWidget" name="page_2">
-     <widget class="QListWidget" name="groupList">
+     <widget class="QWidget" name="gridLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>40</y>
-        <width>321</width>
-        <height>381</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="goToGroup">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>430</y>
-        <width>321</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Acceder a la cagnotte</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="buttonCreerCagnotte">
-      <property name="geometry">
-       <rect>
-        <x>460</x>
+        <x>60</x>
         <y>50</y>
-        <width>241</width>
-        <height>51</height>
+        <width>681</width>
+        <height>491</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Créer une cagnotte</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="buttonAddMontant">
-      <property name="geometry">
-       <rect>
-        <x>460</x>
-        <y>400</y>
-        <width>251</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Créditer mon compte</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelSolde">
-      <property name="geometry">
-       <rect>
-        <x>460</x>
-        <y>350</y>
-        <width>141</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Solde :</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_3">
-     <widget class="QWidget" name="verticalLayoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>110</y>
-        <width>331</width>
-        <height>101</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="1" column="0">
+        <widget class="QPushButton" name="goToGroup">
+         <property name="text">
+          <string>Acceder a la cagnotte</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QListWidget" name="groupList"/>
+       </item>
+       <item row="1" column="2">
+        <layout class="QVBoxLayout" name="verticalLayout_7">
          <item>
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="labelSolde">
            <property name="text">
-            <string>Nom de la cagnotte : </string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            <string>Solde :</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="labelNomCagnotte">
+          <widget class="QPushButton" name="buttonAddMontant">
            <property name="text">
-            <string>CagnotteDefault</string>
+            <string>Créditer mon compte</string>
            </property>
           </widget>
          </item>
         </layout>
        </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item row="0" column="1" colspan="2">
+        <layout class="QVBoxLayout" name="verticalLayout_8">
          <item>
-          <widget class="QLabel" name="label">
+          <widget class="QPushButton" name="buttonCreerCagnotte">
            <property name="text">
-            <string>Budget de la cagnotte : </string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="labelSommeCagnotte">
-           <property name="text">
-            <string>NULL</string>
+            <string>Créer une cagnotte</string>
            </property>
           </widget>
          </item>
@@ -281,6 +214,8 @@
        </item>
       </layout>
      </widget>
+    </widget>
+    <widget class="QWidget" name="page_3">
      <widget class="QPushButton" name="pushButtonBackCagnotte">
       <property name="geometry">
        <rect>
@@ -294,52 +229,116 @@
        <string>&lt;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonAddMoney">
+     <widget class="QWidget" name="gridLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>520</x>
-        <y>110</y>
-        <width>171</width>
-        <height>81</height>
+        <x>30</x>
+        <y>50</y>
+        <width>731</width>
+        <height>521</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Ajouter Argent</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButtonAddParticipants">
-      <property name="geometry">
-       <rect>
-        <x>520</x>
-        <y>250</y>
-        <width>171</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Ajouter Participants</string>
-      </property>
-     </widget>
-     <widget class="QListWidget" name="participantList">
-      <property name="geometry">
-       <rect>
-        <x>480</x>
-        <y>320</y>
-        <width>256</width>
-        <height>192</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QWidget" name="verticalLayoutWidget_3">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>290</y>
-        <width>321</width>
-        <height>261</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3"/>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Nom de la cagnotte : </string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="labelNomCagnotte">
+             <property name="text">
+              <string>CagnotteDefault</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Budget de la cagnotte : </string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="labelSommeCagnotte">
+             <property name="text">
+              <string>NULL</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="1">
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QPushButton" name="pushButtonAddParticipants">
+           <property name="text">
+            <string>Ajouter Participants</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButtonAddMoney">
+           <property name="text">
+            <string>Ajouter Argent</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="1">
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Participants :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QListWidget" name="participantList"/>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="QPushButton" name="pushButtonCreerDemande">
+           <property name="text">
+            <string>Créer une demande</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Demandes en cours :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QListWidget" name="listWidget"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>

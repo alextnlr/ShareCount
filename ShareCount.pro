@@ -24,7 +24,6 @@ SOURCES += \
     ShareCount.cpp \
     cagnotte.cpp \
     demande.cpp \
-    demande.cpp \
     gestionnairebdd.cpp \
     gestionnairegroupe.cpp \
     main.cpp \
@@ -40,7 +39,6 @@ HEADERS += \
     PageConnexion.h \
     ShareCount.h \
     cagnotte.h \
-    demande.h \
     demande.h \
     gestionnairebdd.h \
     gestionnairegroupe.h
