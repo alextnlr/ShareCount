@@ -55,6 +55,8 @@ private slots:
 
     void on_buttonAddMontant_clicked();
 
+    void on_pushButtonCreerDemande_clicked();
+
 private:
     Ui::MainWindow *ui;
     ShareCount& m_shareCount;

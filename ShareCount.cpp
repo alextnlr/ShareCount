@@ -74,6 +74,11 @@ Compte* ShareCount::getCurrentCompte(){
     return m_gestionnaireCompte->compte_connecte();
 }
 
+void ShareCount::ajouterDemande(int montant)
+{
+    m_gestionnaireGroupe->getGroupCurrent()->creerDemande(montant, m_gestionnaireCompte->compte_connecte()->getIdentifiant());
+}
+
 ShareCount::~ShareCount()
 {
     delete m_gestionnaireCompte;

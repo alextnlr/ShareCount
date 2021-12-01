@@ -75,6 +75,16 @@ void MainWindow::update() {
             ui->actionRenommer_Cagnotte->setEnabled(false);
         }
 
+        ui->listWidgetDemandes->clear();
+        std::map<int, Demande*> demandes = m_shareCount.getCurrentGroup()->getDemandes();
+        for(const auto& demande : demandes)
+        {
+            QListWidgetItem* item = new QListWidgetItem;
+            item->setText(QString::fromStdString(m_shareCount.getCompte(demande.second->getIdDemandeur())->getNom())+" "+QString::number(demande.second->getMontant())+"€");
+            item->setData(Qt::UserRole, demande.first);
+            ui->listWidgetDemandes->addItem(item);
+        }
+
     }
 
     QString montant = QString::number(m_shareCount.getCurrentCompte()->getMontant());
@@ -245,3 +255,11 @@ void MainWindow::on_buttonAddMontant_clicked()
     m_shareCount.notify();
 }
 
+
+void MainWindow::on_pushButtonCreerDemande_clicked()
+{
+    QString montant = QInputDialog::getText(0, "Montant", "Entrer montant à ajouter :");
+    if (montant.toInt() >0)
+        m_shareCount.ajouterDemande(montant.toInt());
+    m_shareCount.notify();
+}

@@ -6,6 +6,7 @@
 #include <QVector>
 #include <iostream>
 #include "Compte.h"
+#include "demande.h"
 #include <map>
 
 class Cagnotte
@@ -88,6 +89,24 @@ public:
     void setNom(std::string nom);
 
     /**
+     * @brief creerDemande Creation d'une demande de retrait
+     * @param montant Montant a retirer
+     * @param id_demandeur Id du compte qui a fait la demande
+     */
+    void creerDemande(int montant, int id_demandeur);
+
+    /**
+     * @brief getDemandes Renvoie les demandes
+     * @return map des demandes
+     */
+    const std::map<int, Demande*> getDemandes();
+
+    /**
+     * @brief recupDemandesBdd Recuperation des demandes sur la bdd
+     */
+    void recupDemandesBdd();
+
+    /**
      * Destructeur
      */
     ~Cagnotte();
@@ -123,6 +142,11 @@ private:
      * @brief estOuvert Indique si la cagnotte est ouverte ou fermée
      */
     bool estOuvert;
+
+    /**
+     * @brief m_demandes map des demandes
+     */
+    std::map<int, Demande*> m_demandes;
 };
 
 #endif // CAGNOTTE_H

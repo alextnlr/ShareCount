@@ -24,6 +24,7 @@ public:
     Compte* getCompte(int id);
     Compte* getCurrentCompte();
     void crediterCompte(int montant);
+    void ajouterDemande(int montant);
     ~ShareCount();
 
 private:

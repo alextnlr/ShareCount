@@ -6,6 +6,8 @@ Cagnotte::Cagnotte(std::string nom, int idCagnotte, Compte* createur, int budget
 {
     m_comptes[createur->getIdentifiant()] = createur;
     m_idCreateur = createur->getIdentifiant();
+
+    recupDemandesBdd();
 }
 
 void Cagnotte::addParticipant(Compte* compte){
@@ -58,10 +60,31 @@ void Cagnotte::setNom(std::string nom)
     m_nom = nom;
 }
 
+void Cagnotte::creerDemande(int montant, int id_demandeur)
+{
+    int id = GestionnaireBDD::lastIdDemande()+1;
+    m_demandes[id] = new Demande(id, id_demandeur, montant);
+    GestionnaireBDD::ajouterDemande(id, montant, m_idCagnotte, id_demandeur);
+}
+
+const std::map<int, Demande*> Cagnotte::getDemandes()
+{
+    return m_demandes;
+}
+
+void Cagnotte::recupDemandesBdd()
+{
+    QVector<QVector<int>> tab = GestionnaireBDD::getDemande(m_idCagnotte);
+    for(const auto& value: tab){
+        m_demandes[value[0]] = new Demande(value[0], value[1], value[2], value[3]);
+    }
+}
+
 Cagnotte::~Cagnotte()
 {
     for(auto& compte : m_comptes)
-    {
         delete compte.second;
-    }
+
+    for(auto& demande : m_demandes)
+        delete demande.second;
 }
