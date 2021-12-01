@@ -182,14 +182,16 @@ void MainWindow::on_pushButtonAddParticipants_clicked()
     QString nomResult = QInputDialog::getText(0, "Entrer coordonnées :", "Nom Prénom:");
     std::string coo = nomResult.toStdString();
     std::string delimiter = " ";
-    std::string nom = coo.substr(0, coo.find(delimiter));
-    std::string prenom = coo.substr(nom.length() + 1);
-    qDebug() << QString::fromStdString(nom) << " " << QString::fromStdString(prenom);
+    if (coo.find(delimiter) != std::string::npos)
+    {
+        std::string nom = coo.substr(0, coo.find(delimiter));
+        std::string prenom = coo.substr(nom.length() + 1);
+        qDebug() << QString::fromStdString(nom) << " " << QString::fromStdString(prenom);
 
-    int id = m_shareCount.trouverCompte(nom, prenom);
-    if (id != -1){
-        m_shareCount.addParticipant(m_shareCount.getCompte(id));
-        m_shareCount.notify();
+        if (m_shareCount.trouverCompte(nom, prenom) != -1){
+            m_shareCount.addParticipant(m_shareCount.getCompte(m_shareCount.trouverCompte(nom, prenom)));
+            m_shareCount.notify();
+        }
     }
 
 }
