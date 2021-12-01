@@ -48,6 +48,10 @@ void ShareCount::addToCagnotte(int montant)
     }
 }
 
+void ShareCount::crediterCompte(int montant){
+    m_gestionnaireCompte->compte_connecte()->addMontant(montant);
+}
+
 void ShareCount::renameCagnotte(std::string nom)
 {
     m_gestionnaireGroupe->updateNomCagnotte(nom);

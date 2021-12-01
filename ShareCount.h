@@ -23,6 +23,7 @@ public:
     void addParticipant(Compte* compte);
     Compte* getCompte(int id);
     Compte* getCurrentCompte();
+    void crediterCompte(int montant);
     ~ShareCount();
 
 private:

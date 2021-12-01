@@ -199,6 +199,32 @@
        <string>Créer une cagnotte</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="buttonAddMontant">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>400</y>
+        <width>251</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Créditer mon compte</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelSolde">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>350</y>
+        <width>141</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Solde :</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_3">
      <widget class="QWidget" name="verticalLayoutWidget_2">

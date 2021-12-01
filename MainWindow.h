@@ -53,6 +53,8 @@ private slots:
 
     void on_actionRenommer_Cagnotte_triggered();
 
+    void on_buttonAddMontant_clicked();
+
 private:
     Ui::MainWindow *ui;
     ShareCount& m_shareCount;

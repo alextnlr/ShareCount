@@ -74,7 +74,11 @@ void MainWindow::update() {
             ui->actionSupprimer_Cagnotte->setEnabled(false);
             ui->actionRenommer_Cagnotte->setEnabled(false);
         }
+
     }
+
+    QString montant = QString::number(m_shareCount.getCurrentCompte()->getMontant());
+    ui->labelSolde->setText("Solde : " + montant + "€");
 }
 
 void MainWindow::on_pushButtonCreationCompte_clicked()
@@ -226,9 +230,18 @@ void MainWindow::on_actionSupprimer_Cagnotte_triggered()
 
 void MainWindow::on_actionRenommer_Cagnotte_triggered()
 {
-    QString nomResult = QInputDialog::getText(0, "Entrer le nouveau nom :", "Nom :");
+    QString nomResult = QInputDialog::getText(0, "Nom :", "Entrer le nouveau nom :");
     if(!nomResult.isEmpty())
         m_shareCount.renameCagnotte(nomResult.toStdString());
 
     m_shareCount.notify();
 }
+
+void MainWindow::on_buttonAddMontant_clicked()
+{
+    QString montant = QInputDialog::getText(0, "Montant", "Entrer montant à ajouter :");
+    if (montant.toInt() >0)
+        m_shareCount.crediterCompte(montant.toInt());
+    m_shareCount.notify();
+}
+
