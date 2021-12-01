@@ -65,7 +65,6 @@ public:
      */
     int getMontant();
 
-
     /**
      * Destructeur
      */
