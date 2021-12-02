@@ -63,8 +63,10 @@ void Cagnotte::setNom(std::string nom)
 void Cagnotte::creerDemande(int montant, int id_demandeur)
 {
     int id = GestionnaireBDD::lastIdDemande()+1;
-    m_demandes[id] = new Demande(id, id_demandeur, montant);
-    GestionnaireBDD::ajouterDemande(id, montant, m_idCagnotte, id_demandeur);
+    if (montant<= m_budget){
+        m_demandes[id] = new Demande(id, id_demandeur, montant);
+        GestionnaireBDD::ajouterDemande(id, montant, m_idCagnotte, id_demandeur);
+    }
 }
 
 const std::map<int, Demande*> Cagnotte::getDemandes()
