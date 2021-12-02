@@ -82,6 +82,7 @@ void Cagnotte::recupDemandesBdd()
     }
 }
 
+
 Cagnotte::~Cagnotte()
 {
     for(auto& compte : m_comptes)

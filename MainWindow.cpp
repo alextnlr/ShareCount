@@ -1,5 +1,6 @@
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QMessageBox>
 #include "MainWindow.h"
 #include "ui_mainwindow.h"
 
@@ -51,7 +52,7 @@ void MainWindow::update() {
         ui->labelNomCagnotte->setText(nomCagnotte);
 
         int budget = m_shareCount.getCurrentGroup()->getBudget();
-        ui->labelSommeCagnotte->setText(QString::fromStdString(std::to_string(budget)));
+        ui->labelSommeCagnotte->setText(QString::fromStdString(std::to_string(budget)) + "€");
 
         std::map<int, Compte*> compte_co = m_shareCount.getCurrentGroup()->getListeParticipant();
         for (const auto& compte : compte_co){
@@ -263,3 +264,16 @@ void MainWindow::on_pushButtonCreerDemande_clicked()
         m_shareCount.ajouterDemande(montant.toInt());
     m_shareCount.notify();
 }
+
+void MainWindow::on_listWidgetDemandes_itemDoubleClicked(QListWidgetItem *item)
+{
+
+    int reponse = QMessageBox::question(this, "Valider demande", "Acceptez vous la demande de retrait ", QMessageBox::Yes | QMessageBox::No);
+    if (reponse == QMessageBox::Yes){
+
+    }
+    if (reponse == QMessageBox::No){
+
+    }
+}
+

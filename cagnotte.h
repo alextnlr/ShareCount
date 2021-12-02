@@ -101,6 +101,7 @@ public:
      */
     const std::map<int, Demande*> getDemandes();
 
+
     /**
      * @brief recupDemandesBdd Recuperation des demandes sur la bdd
      */
