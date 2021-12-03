@@ -273,13 +273,21 @@ void MainWindow::on_pushButtonCreerDemande_clicked()
 
 void MainWindow::on_listWidgetDemandes_itemDoubleClicked(QListWidgetItem *item)
 {
-    int reponse = QMessageBox::question(this, "Valider demande", "Acceptez vous la demande de retrait ", QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No);
-    if (reponse == QMessageBox::Yes){
-        m_shareCount.getCurrentGroup()->getDemande(item->data(Qt::UserRole).toInt())->ajouterReponse(m_shareCount.getCurrentCompte()->getIdentifiant(), true);
+    if(m_shareCount.getCurrentGroup()->getDemande(item->data(Qt::UserRole).toInt())->getIdDemandeur() == m_shareCount.getCurrentCompte()->getIdentifiant())
+    {
+        QMessageBox::question(this, "Createur de la demande", "Vous ne pouvez pas répondre à votre propre demande", QMessageBox::Close);
     }
-    if (reponse == QMessageBox::No){
-        m_shareCount.getCurrentGroup()->getDemande(item->data(Qt::UserRole).toInt())->ajouterReponse(m_shareCount.getCurrentCompte()->getIdentifiant(), false);
+    else
+    {
+        int reponse = QMessageBox::question(this, "Valider demande", "Acceptez vous la demande de retrait ", QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No);
+        if (reponse == QMessageBox::Yes){
+            m_shareCount.getCurrentGroup()->getDemande(item->data(Qt::UserRole).toInt())->ajouterReponse(m_shareCount.getCurrentCompte()->getIdentifiant(), true);
+        }
+        if (reponse == QMessageBox::No){
+            m_shareCount.getCurrentGroup()->getDemande(item->data(Qt::UserRole).toInt())->ajouterReponse(m_shareCount.getCurrentCompte()->getIdentifiant(), false);
+        }
     }
+    m_shareCount.notify();
 }
 
 
