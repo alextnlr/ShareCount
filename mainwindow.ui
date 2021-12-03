@@ -336,6 +336,13 @@
          <item>
           <widget class="QListWidget" name="listWidgetDemandes"/>
          </item>
+         <item>
+          <widget class="QPushButton" name="pushButtonRepondre">
+           <property name="text">
+            <string>Répondre à la demande</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
       </layout>

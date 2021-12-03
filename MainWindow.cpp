@@ -81,7 +81,13 @@ void MainWindow::update() {
         for(const auto& demande : demandes)
         {
             QListWidgetItem* item = new QListWidgetItem;
-            item->setText(QString::fromStdString(m_shareCount.getCompte(demande.second->getIdDemandeur())->getNom())+" "+QString::number(demande.second->getMontant())+"€");
+            QString text = QString::fromStdString(m_shareCount.getCompte(demande.second->getIdDemandeur())->getNom())+" "+QString::number(demande.second->getMontant())+"€";
+            int accept = demande.second->aAccepte(m_shareCount.getCurrentCompte()->getIdentifiant());
+            if(accept == 0)
+                text += "  (Refuse)";
+            else if(accept == 1)
+                text += "  (Accepte)";
+            item->setText(text);
             item->setData(Qt::UserRole, demande.first);
             ui->listWidgetDemandes->addItem(item);
         }
@@ -267,13 +273,18 @@ void MainWindow::on_pushButtonCreerDemande_clicked()
 
 void MainWindow::on_listWidgetDemandes_itemDoubleClicked(QListWidgetItem *item)
 {
-
-    int reponse = QMessageBox::question(this, "Valider demande", "Acceptez vous la demande de retrait ", QMessageBox::Yes | QMessageBox::No);
+    int reponse = QMessageBox::question(this, "Valider demande", "Acceptez vous la demande de retrait ", QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No);
     if (reponse == QMessageBox::Yes){
-
+        m_shareCount.getCurrentGroup()->getDemande(item->data(Qt::UserRole).toInt())->ajouterReponse(m_shareCount.getCurrentCompte()->getIdentifiant(), true);
     }
     if (reponse == QMessageBox::No){
-
+        m_shareCount.getCurrentGroup()->getDemande(item->data(Qt::UserRole).toInt())->ajouterReponse(m_shareCount.getCurrentCompte()->getIdentifiant(), false);
     }
 }
 
+
+void MainWindow::on_pushButtonRepondre_clicked()
+{
+    if(ui->listWidgetDemandes->currentItem() != nullptr)
+        on_listWidgetDemandes_itemDoubleClicked(ui->listWidgetDemandes->currentItem());
+}

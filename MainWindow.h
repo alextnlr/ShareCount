@@ -59,6 +59,8 @@ private slots:
 
     void on_listWidgetDemandes_itemDoubleClicked(QListWidgetItem *item);
 
+    void on_pushButtonRepondre_clicked();
+
 private:
     Ui::MainWindow *ui;
     ShareCount& m_shareCount;

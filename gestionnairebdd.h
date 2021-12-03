@@ -50,6 +50,14 @@ public:
      */
     static void ajouterDemande(int id_demande, int montant, int id_cagnotte, int id_compte);
 
+    /**
+     * @brief ajouterAcceptation Ajoute une reponse à la BDD
+     * @param id_demande Identifiant de la demande
+     * @param id_compte Identifiant du compte
+     * @param result Resultat de la reponse
+     */
+    static void ajouterAcceptation(int id_demande, int id_compte, bool result);
+
     static void chercheAlex();
 
     /**
@@ -76,6 +84,14 @@ public:
     static int lastIdDemande();
 
     /**
+     * @brief accepationExist Return true si l'acceptation exist
+     * @param id_demande Identifiant de la demande
+     * @param id_compte Identifiant du compte demandeur
+     * @return bool true si l'accepation exist
+     */
+    static bool acceptationExist(int id_demande, int id_compte);
+
+    /**
      * @brief nbCompte
      * @return Nombre de compte connu par la BDD
      */
@@ -100,7 +116,19 @@ public:
      */
     static QVector<int> getParticipation(int id_cagnotte);
 
+    /**
+     * @brief getDemande Renvoie la liste des demandes
+     * @param id_cagnotte Identifiant de la cagnotte
+     * @return Liste de listes des informations des demandes
+     */
     static QVector<QVector<int>> getDemande(int id_cagnotte);
+
+    /**
+     * @brief getAcceptation Retourne la liste des acceptations selon une cagnotte
+     * @param id_cagnotte Identifiant de la cagnotte
+     * @return Map des identifiant des comptes et leur réponse
+     */
+    static std::map<int, bool> getAcceptation(int id_demande);
 
     /**
      * @brief updateMontantCagnotte Met à jour le montant de la cagnotte dans la BDD
@@ -129,6 +157,14 @@ public:
      * @param acceptations Nombre d'acceptations de la demande
      */
     static void updateAcceptationDemande(int id_demande, int acceptations);
+
+    /**
+     * @brief updateAcceptation Update une acceptation
+     * @param id_demande Identifiant de la demande
+     * @param id_compte Identifiant du compte
+     * @param result Resultat de l'acceptation
+     */
+    static void updateAcceptation(int id_demande, int id_compte, bool result);
 
     /**
      * @brief initInstance Instancie la BDD

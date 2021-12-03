@@ -74,6 +74,11 @@ const std::map<int, Demande*> Cagnotte::getDemandes()
     return m_demandes;
 }
 
+Demande* Cagnotte::getDemande(int id_demande)
+{
+    return m_demandes[id_demande];
+}
+
 void Cagnotte::recupDemandesBdd()
 {
     QVector<QVector<int>> tab = GestionnaireBDD::getDemande(m_idCagnotte);

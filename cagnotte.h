@@ -7,6 +7,7 @@
 #include <iostream>
 #include "Compte.h"
 #include "demande.h"
+#include "gestionnairebdd.h"
 #include <map>
 
 class Cagnotte
@@ -101,6 +102,12 @@ public:
      */
     const std::map<int, Demande*> getDemandes();
 
+    /**
+     * @brief getDemande Renvoie la référence a une demande
+     * @param id_demande Identifiant de la demande
+     * @return Pointeur sur la demande
+     */
+    Demande* getDemande(int id_demande);
 
     /**
      * @brief recupDemandesBdd Recuperation des demandes sur la bdd

@@ -53,6 +53,11 @@ void GestionnaireBDD::initBdd()
         if(!queryDemande.isActive())
             qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryDemande.lastError().text();
 
+        QSqlQuery queryAcceptation("CREATE TABLE if not exists acceptation(id_demande INTEGER, id_compte INTEGER, result BOOLEAN, PRIMARY KEY(id_demande, id_compte), FOREIGN KEY(id_demande) REFERENCES demande(id_demande), FOREIGN KEY(id_compte) REFERENCES compte(id))");
+
+        if(!queryAcceptation.isActive())
+            qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryAcceptation.lastError().text();
+
 }
 
 void GestionnaireBDD::ajouterCompte(int id, std::string nom, std::string prenom, std::string mdp)
@@ -111,6 +116,19 @@ void GestionnaireBDD::ajouterDemande(int id_demande, int montant, int id_cagnott
 
     if(!query.exec())
         qWarning() << "GestionnaireBDD::ajouterDemande - ERROR: " << query.lastError().text();
+}
+
+void GestionnaireBDD::ajouterAcceptation(int id_demande, int id_compte, bool result)
+{
+    QSqlQuery query;
+
+    query.prepare("INSERT INTO acceptation(id_demande, id_compte, result) VALUES(:id_demande, :id_compte, :result)");
+    query.bindValue(":id_demande", id_demande);
+    query.bindValue(":id_compte", id_compte);
+    query.bindValue(":result", result);
+
+    if(!query.exec())
+        qWarning() << "GestionnaireBDD::ajouterAcceptation - ERROR: " << query.lastError().text();
 }
 
 void GestionnaireBDD::hardReset()
@@ -177,6 +195,29 @@ int GestionnaireBDD::lastIdDemande()
         }
     }
     return value;
+}
+
+bool GestionnaireBDD::acceptationExist(int id_demande, int id_compte)
+{
+    QSqlQuery query;
+    bool exist = false;
+
+    query.prepare("SELECT COUNT(*) FROM acceptation WHERE id_demande=:id_demande AND id_compte=:id_compte");
+    query.bindValue(":id_demande", id_demande);
+    query.bindValue(":id_compte", id_compte);
+
+    if(!query.exec())
+        qWarning() << "GestionnaireBDD::acceptationExist - ERROR: " << query.lastError().text();
+    else
+    {
+        while(query.next())
+        {
+            if(query.value(0).toInt() != 0)
+                exist = true;
+        }
+    }
+
+    return exist;
 }
 
 int GestionnaireBDD::nbCompte()
@@ -284,6 +325,26 @@ QVector<QVector<int>> GestionnaireBDD::getDemande(int id_cagnotte)
     return demandes;
 }
 
+std::map<int, bool> GestionnaireBDD::getAcceptation(int id_demande)
+{
+    QSqlQuery query;
+    std::map<int, bool> accepations;
+
+    query.prepare("SELECT id_compte, result FROM acceptation WHERE id_demande=:id_demande");
+    query.bindValue(":id_demande", id_demande);
+
+    if(!query.exec())
+        qWarning() << "GestionnaireBDD::getAcceptation - ERROR: " << query.lastError().text();
+    else
+    {
+        while (query.next()) {
+            accepations[query.value(0).toInt()] = query.value(1).toBool();
+        }
+    }
+
+    return accepations;
+}
+
 void GestionnaireBDD::updateMontantCagnotte(int id_cagnotte, int montant)
 {
     QSqlQuery query;
@@ -330,4 +391,17 @@ void GestionnaireBDD::updateAcceptationDemande(int id_demande, int acceptations)
 
     if(!query.exec())
         qWarning() << "GestionnaireBDD::updateAcceptationDemande - ERROR " << query.lastError().text();
+}
+
+void GestionnaireBDD::updateAcceptation(int id_demande, int id_compte, bool result)
+{
+    QSqlQuery query;
+
+    query.prepare("UPDATE acceptation SET result=:result WHERE id_demande=:id_demande AND id_compte=:id_compte");
+    query.bindValue(":result", result);
+    query.bindValue(":id_demande", id_demande);
+    query.bindValue(":id_compte", id_compte);
+
+    if(!query.exec())
+        qWarning() << "GestionnaireBDD::updateAcceptation - ERROR: " << query.lastError().text();
 }
