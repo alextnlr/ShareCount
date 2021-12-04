@@ -82,11 +82,26 @@ void MainWindow::update() {
         {
             QListWidgetItem* item = new QListWidgetItem;
             QString text = QString::fromStdString(m_shareCount.getCompte(demande.second->getIdDemandeur())->getNom())+" "+QString::number(demande.second->getMontant())+"€";
-            int accept = demande.second->aAccepte(m_shareCount.getCurrentCompte()->getIdentifiant());
-            if(accept == 0)
-                text += "  (Refuse)";
-            else if(accept == 1)
-                text += "  (Accepte)";
+
+            if(demande.second->getIdDemandeur() == m_shareCount.getCurrentCompte()->getIdentifiant())
+            {
+                int accept = m_shareCount.getCurrentGroup()->isDemandeAccepte(demande.second->getIdDemande());
+                if (accept == -1)
+                    text += "  (Refusé)";
+                if (accept == 0)
+                    text += "  (En cours)";
+                if (accept == 1)
+                    text += "  (Accepté)";
+            }
+            else
+            {
+                int accept = demande.second->aAccepte(m_shareCount.getCurrentCompte()->getIdentifiant());
+                if(accept == 0)
+                    text += "  (Répondu: Refusé)";
+                else if(accept == 1)
+                    text += "  (Répondu: Accepté)";
+            }
+
             item->setText(text);
             item->setData(Qt::UserRole, demande.first);
             ui->listWidgetDemandes->addItem(item);

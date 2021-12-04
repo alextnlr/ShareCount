@@ -79,6 +79,44 @@ Demande* Cagnotte::getDemande(int id_demande)
     return m_demandes[id_demande];
 }
 
+int Cagnotte::isDemandeAccepte(int id_demande)
+{
+    bool termine = true;
+    int nbAccepte = 0;
+    int result = 0;
+    for (const auto& compte : m_comptes)
+    {
+        if (m_demandes[id_demande]->aAccepte(compte.second->getIdentifiant()) == 1)
+        {
+            nbAccepte++;
+        }
+        else if(m_demandes[id_demande]->aAccepte(compte.second->getIdentifiant()) == -1)
+        {
+            termine = false;
+        }
+    }
+
+    if(termine)
+        result = -1;
+
+    if(m_comptes.size() == 1)
+    {
+        result = 1;
+    }
+    else if(m_comptes.size() == 2)
+    {
+        if(nbAccepte > 0)
+            result = 1;
+    }
+    else
+    {
+        if(nbAccepte > 1)
+            result = 1;
+    }
+
+    return result;
+}
+
 void Cagnotte::recupDemandesBdd()
 {
     QVector<QVector<int>> tab = GestionnaireBDD::getDemande(m_idCagnotte);

@@ -72,6 +72,9 @@ public:
      */
     int aAccepte(int idCompte);
 
+    /**
+     * @brief recupAcceptationsBDD Recupère les comptes qui ont répondu depuis la bdd
+     */
     void recupAcceptationsBDD();
 
 

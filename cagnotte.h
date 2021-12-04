@@ -110,6 +110,13 @@ public:
     Demande* getDemande(int id_demande);
 
     /**
+     * @brief isDemandeAccepte Renvoie l'état d'une demande
+     * @param id_demande identidiant de la demande
+     * @return 0 si en cours, -1 si refusée, 1 si acceptée
+     */
+    int isDemandeAccepte(int id_demande);
+
+    /**
      * @brief recupDemandesBdd Recuperation des demandes sur la bdd
      */
     void recupDemandesBdd();
