@@ -257,7 +257,19 @@ void MainWindow::on_pushButtonAddParticipants_clicked()
 
 void MainWindow::on_actionSupprimer_Cagnotte_triggered()
 {
-
+    if(m_shareCount.getCurrentGroup()->getBudget() == 0)
+    {
+        int reponse = QMessageBox::question(this, "Valider suppression", "Voulez vous supprimer la cagnotte ?", QMessageBox::Cancel | QMessageBox::Yes);
+        if(reponse == QMessageBox::Yes)
+        {
+            ui->stackedWidget->setCurrentIndex(1);
+            m_shareCount.deleteCagnotte(m_shareCount.getCurrentGroup()->getIdCagnotte());
+        }
+    }
+    else {
+        QMessageBox::information(this, "Suppression refusée", "La cagnotte à encore de l'argent");
+    }
+    m_shareCount.notify();
 }
 
 void MainWindow::on_actionRenommer_Cagnotte_triggered()

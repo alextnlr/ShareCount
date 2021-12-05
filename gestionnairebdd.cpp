@@ -406,6 +406,25 @@ void GestionnaireBDD::updateAcceptation(int id_demande, int id_compte, bool resu
         qWarning() << "GestionnaireBDD::updateAcceptation - ERROR: " << query.lastError().text();
 }
 
+void GestionnaireBDD::deleteCagnotte(int id_cagnotte)
+{
+    QSqlQuery queryDeleteParticipation;
+
+    queryDeleteParticipation.prepare("DELETE FROM participation WHERE id_cagnotte=:id_cagnotte");
+    queryDeleteParticipation.bindValue(":id_cagnotte", id_cagnotte);
+
+    if(!queryDeleteParticipation.exec())
+        qWarning() << "GestionnaireBDD::deleteCagnotte - ERROR: " << queryDeleteParticipation.lastError().text();
+
+    QSqlQuery queryCagnotte;
+
+    queryCagnotte.prepare("DELETE FROM cagnotte WHERE id_cagnotte=:id_cagnotte");
+    queryCagnotte.bindValue(":id_cagnotte", id_cagnotte);
+
+    if(!queryCagnotte.exec())
+        qWarning() << "GestionnaireBDD::deleteDemande - ERROR: " << queryCagnotte.lastError().text();
+}
+
 void GestionnaireBDD::deleteDemande(int id_demande)
 {
     QSqlQuery queryDeleteAcceptation;

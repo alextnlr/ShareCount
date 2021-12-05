@@ -167,6 +167,12 @@ public:
     static void updateAcceptation(int id_demande, int id_compte, bool result);
 
     /**
+     * @brief deleteCagnotte Supprime une cagnotte dans la bdd
+     * @param id_cagnotte Identifiant de la cagnotte
+     */
+    static void deleteCagnotte(int id_cagnotte);
+
+    /**
      * @brief deleteDemande Supprime une demande dans la bdd
      * @param id_demande Identifiant de la demande
      */

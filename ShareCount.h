@@ -25,6 +25,7 @@ public:
     Compte* getCurrentCompte();
     void crediterCompte(int montant);
     void ajouterDemande(int montant);
+    void deleteCagnotte(int id_cagnotte);
     ~ShareCount();
 
 private:

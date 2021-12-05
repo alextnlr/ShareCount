@@ -77,6 +77,13 @@ void GestionnaireGroupe::addParticipant(Compte *compte){
     GestionnaireBDD::ajouterParticipant(m_groupCurrent->getIdCagnotte(), compte->getIdentifiant());
 }
 
+void GestionnaireGroupe::deleteCagnotte(int id_cagnotte)
+{
+    m_groupCurrent = nullptr;
+    m_groupes.erase(id_cagnotte);
+    GestionnaireBDD::deleteCagnotte(id_cagnotte);
+}
+
 GestionnaireGroupe::~GestionnaireGroupe()
 {
     for(auto& groupe : m_groupes)

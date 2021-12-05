@@ -79,6 +79,11 @@ void ShareCount::ajouterDemande(int montant)
     m_gestionnaireGroupe->getGroupCurrent()->creerDemande(montant, m_gestionnaireCompte->compte_connecte()->getIdentifiant());
 }
 
+void ShareCount::deleteCagnotte(int id_cagnotte)
+{
+    m_gestionnaireGroupe->deleteCagnotte(id_cagnotte);
+}
+
 ShareCount::~ShareCount()
 {
     delete m_gestionnaireCompte;

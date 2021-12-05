@@ -21,6 +21,7 @@ public:
     bool cagnotteIsSelected();
     void addParticipant(Compte* compte);
     void updateNomCagnotte(std::string nom);
+    void deleteCagnotte(int id_cagnotte);
     ~GestionnaireGroupe();
 private:
     std::map<int, Cagnotte*> m_groupes;
