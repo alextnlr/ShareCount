@@ -405,3 +405,22 @@ void GestionnaireBDD::updateAcceptation(int id_demande, int id_compte, bool resu
     if(!query.exec())
         qWarning() << "GestionnaireBDD::updateAcceptation - ERROR: " << query.lastError().text();
 }
+
+void GestionnaireBDD::deleteDemande(int id_demande)
+{
+    QSqlQuery queryDeleteAcceptation;
+
+    queryDeleteAcceptation.prepare("DELETE FROM acceptation WHERE id_demande=:id_demande");
+    queryDeleteAcceptation.bindValue(":id_demande", id_demande);
+
+    if(!queryDeleteAcceptation.exec())
+        qWarning() << "GestionnaireBDD::deleteDemande - ERROR: " << queryDeleteAcceptation.lastError().text();
+
+    QSqlQuery queryDemande;
+
+    queryDemande.prepare("DELETE FROM demande WHERE id_demande=:id_demande");
+    queryDemande.bindValue(":id_demande", id_demande);
+
+    if(!queryDemande.exec())
+        qWarning() << "GestionnaireBDD::deleteDemande - ERROR: " << queryDemande.lastError().text();
+}

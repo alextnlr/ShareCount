@@ -290,7 +290,26 @@ void MainWindow::on_listWidgetDemandes_itemDoubleClicked(QListWidgetItem *item)
 {
     if(m_shareCount.getCurrentGroup()->getDemande(item->data(Qt::UserRole).toInt())->getIdDemandeur() == m_shareCount.getCurrentCompte()->getIdentifiant())
     {
-        QMessageBox::question(this, "Createur de la demande", "Vous ne pouvez pas répondre à votre propre demande", QMessageBox::Close);
+        int accept = m_shareCount.getCurrentGroup()->isDemandeAccepte(item->data(Qt::UserRole).toInt());
+        if(accept == -1)
+        {
+            QMessageBox::question(this, "Etat de la demande", "Votre demande à été refusée", QMessageBox::Ok);
+            m_shareCount.getCurrentGroup()->endDemande(item->data(Qt::UserRole).toInt(), false);
+        }
+        if(accept == 0)
+            QMessageBox::question(this, "Createur de la demande", "Vous ne pouvez pas répondre à votre propre demande", QMessageBox::Close);
+        if(accept == 1)
+        {
+            if(m_shareCount.getCurrentGroup()->getDemande(item->data(Qt::UserRole).toInt())->getMontant() > m_shareCount.getCurrentGroup()->getBudget())
+            {
+                QMessageBox::question(this, "Etat de la demande", "Votre demande à été acceptée mais il n'y a plus assez de budget dans la cagnotte", QMessageBox::Ok);
+            }
+            else
+            {
+                QMessageBox::question(this, "Etat de la demande", "Votre demande à été acceptée", QMessageBox::Ok);
+                m_shareCount.getCurrentGroup()->endDemande(item->data(Qt::UserRole).toInt(), true);
+            }
+        }
     }
     else
     {

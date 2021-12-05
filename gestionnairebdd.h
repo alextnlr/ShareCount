@@ -167,6 +167,12 @@ public:
     static void updateAcceptation(int id_demande, int id_compte, bool result);
 
     /**
+     * @brief deleteDemande Supprime une demande dans la bdd
+     * @param id_demande Identifiant de la demande
+     */
+    static void deleteDemande(int id_demande);
+
+    /**
      * @brief initInstance Instancie la BDD
      */
     static void initInstance();

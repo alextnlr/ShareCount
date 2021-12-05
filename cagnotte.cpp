@@ -18,6 +18,18 @@ void Cagnotte::addBudget(int toAdd){
     m_budget += toAdd;
 }
 
+void Cagnotte::endDemande(int id_demande, bool result)
+{
+    if (result)
+    {
+        m_comptes[m_demandes[id_demande]->getIdDemandeur()]->addMontant(m_demandes[id_demande]->getMontant());
+        m_budget -= m_demandes[id_demande]->getMontant();
+    }
+
+    m_demandes.erase(id_demande);
+    GestionnaireBDD::deleteDemande(id_demande);
+}
+
 string Cagnotte::getNom(){
     return m_nom;
 }
@@ -90,7 +102,7 @@ int Cagnotte::isDemandeAccepte(int id_demande)
         {
             nbAccepte++;
         }
-        else if(m_demandes[id_demande]->aAccepte(compte.second->getIdentifiant()) == -1)
+        else if (m_demandes[id_demande]->getIdDemandeur() != compte.second->getIdentifiant() && m_demandes[id_demande]->aAccepte(compte.second->getIdentifiant()) == -1)
         {
             termine = false;
         }

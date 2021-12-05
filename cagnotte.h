@@ -77,6 +77,13 @@ public:
     void addBudget(int toAdd);
 
     /**
+     * @brief endDemande Fini une demande
+     * @param id_demande Identifiant de la demande
+     * @param result True si la demande a été acceptée, false sinon
+     */
+    void endDemande(int id_demande, bool result);
+
+    /**
      * @brief participe Permet de savoir si un utilisateur participe ou non à une cagnotte
      * @param id id du compte à chercher
      * @return true si on a trouvé le compte
