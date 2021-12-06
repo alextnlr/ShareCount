@@ -27,6 +27,7 @@ void Cagnotte::endDemande(int id_demande, bool result)
     }
 
     m_demandes.erase(id_demande);
+    GestionnaireBDD::updateMontantCagnotte(m_idCagnotte, m_budget);
     GestionnaireBDD::deleteDemande(id_demande);
 }
 
