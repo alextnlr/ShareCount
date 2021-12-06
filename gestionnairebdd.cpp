@@ -33,27 +33,27 @@ void GestionnaireBDD::databaseConnect()
 
 void GestionnaireBDD::initBdd()
 {
-        QSqlQuery queryCompte("CREATE TABLE if not exists compte (id INTEGER PRIMARY KEY, nom TEXT, prenom TEXT, mdp TEXT, montant INTEGER)");
+        QSqlQuery queryCompte("CREATE TABLE if not exists compte (id INTEGER PRIMARY KEY, nom TEXT, prenom TEXT, mdp TEXT, montant INTEGER);");
 
         if(!queryCompte.isActive())
             qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryCompte.lastError().text();
 
-        QSqlQuery queryCagnotte("CREATE TABLE if not exists cagnotte (id_cagnotte INTEGER PRIMARY KEY, nom_cagnotte TEXT, budget_cagnotte INT, id_createur INT, FOREIGN KEY(id_createur) REFERENCES compte(id))");
+        QSqlQuery queryCagnotte("CREATE TABLE if not exists cagnotte (id_cagnotte INTEGER PRIMARY KEY, nom_cagnotte TEXT, budget_cagnotte INT, id_createur INT, FOREIGN KEY(id_createur) REFERENCES compte(id));");
 
         if(!queryCagnotte.isActive())
             qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryCagnotte.lastError().text();
 
-        QSqlQuery queryParticipation("CREATE TABLE if not exists participation (id INTEGER, id_cagnotte INTEGER, PRIMARY KEY(id, id_cagnotte), FOREIGN KEY(id) REFERENCES compte(id), FOREIGN KEY(id_cagnotte) REFERENCES cagnotte(id_cagnotte))");
+        QSqlQuery queryParticipation("CREATE TABLE if not exists participation (id INTEGER, id_cagnotte INTEGER, PRIMARY KEY(id, id_cagnotte), FOREIGN KEY(id) REFERENCES compte(id), FOREIGN KEY(id_cagnotte) REFERENCES cagnotte(id_cagnotte));");
 
         if(!queryParticipation.isActive())
             qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryParticipation.lastError().text();
 
-        QSqlQuery queryDemande("CREATE TABLE if not exists demande (id_demande INTEGER PRIMARY KEY, montant INTEGER, acceptation INTEGER, id_compte INTEGER, id_cagnotte INTEGER, FOREIGN KEY(id_compte) REFERENCES compte(id), FOREIGN KEY(id_cagnotte) REFERENCES cagnotte(id_cagnotte))");
+        QSqlQuery queryDemande("CREATE TABLE if not exists demande (id_demande INTEGER PRIMARY KEY, montant INTEGER, acceptation INTEGER, id_compte INTEGER, id_cagnotte INTEGER, FOREIGN KEY(id_compte) REFERENCES compte(id), FOREIGN KEY(id_cagnotte) REFERENCES cagnotte(id_cagnotte));");
 
         if(!queryDemande.isActive())
             qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryDemande.lastError().text();
 
-        QSqlQuery queryAcceptation("CREATE TABLE if not exists acceptation(id_demande INTEGER, id_compte INTEGER, result BOOLEAN, PRIMARY KEY(id_demande, id_compte), FOREIGN KEY(id_demande) REFERENCES demande(id_demande), FOREIGN KEY(id_compte) REFERENCES compte(id))");
+        QSqlQuery queryAcceptation("CREATE TABLE if not exists acceptation(id_demande INTEGER, id_compte INTEGER, result BOOLEAN, PRIMARY KEY(id_demande, id_compte), FOREIGN KEY(id_demande) REFERENCES demande(id_demande), FOREIGN KEY(id_compte) REFERENCES compte(id));");
 
         if(!queryAcceptation.isActive())
             qWarning() << "GestionnaireBDD::initBDD - ERROR: " << queryAcceptation.lastError().text();
@@ -64,7 +64,7 @@ void GestionnaireBDD::ajouterCompte(int id, std::string nom, std::string prenom,
 {
     QSqlQuery query;
 
-    query.prepare("INSERT INTO compte(id, nom, prenom, mdp, montant) VALUES(:id, :nom, :prenom, :mdp, :montant)");
+    query.prepare("INSERT INTO compte(id, nom, prenom, mdp, montant) VALUES(:id, :nom, :prenom, :mdp, :montant);");
     query.bindValue(":id", id);
     query.bindValue(":nom", nom.c_str());
     query.bindValue(":prenom", prenom.c_str());
@@ -79,7 +79,7 @@ void GestionnaireBDD::ajouterCagnotte(int id_cagnotte, std::string nom, int id_c
 {
     QSqlQuery queryCagnotte;
 
-    queryCagnotte.prepare("INSERT INTO cagnotte(id_cagnotte, nom_cagnotte, budget_cagnotte, id_createur) VALUES(:id_cagnotte, :nom_cagnotte, :budget_cagnotte, :id_createur)");
+    queryCagnotte.prepare("INSERT INTO cagnotte(id_cagnotte, nom_cagnotte, budget_cagnotte, id_createur) VALUES(:id_cagnotte, :nom_cagnotte, :budget_cagnotte, :id_createur);");
     queryCagnotte.bindValue(":id_cagnotte", id_cagnotte);
     queryCagnotte.bindValue(":nom_cagnotte", nom.c_str());
     queryCagnotte.bindValue(":budget_cagnotte", 0);
@@ -95,7 +95,7 @@ void GestionnaireBDD::ajouterParticipant(int id_cagnotte, int id_participant)
 {
     QSqlQuery queryParticipation;
 
-    queryParticipation.prepare("INSERT INTO participation(id, id_cagnotte) VALUES(:id, :id_cagnotte)");
+    queryParticipation.prepare("INSERT INTO participation(id, id_cagnotte) VALUES(:id, :id_cagnotte);");
     queryParticipation.bindValue(":id", id_participant);
     queryParticipation.bindValue(":id_cagnotte", id_cagnotte);
 
@@ -107,7 +107,7 @@ void GestionnaireBDD::ajouterDemande(int id_demande, int montant, int id_cagnott
 {
     QSqlQuery query;
 
-    query.prepare("INSERT INTO demande (id_demande, montant, acceptation, id_compte, id_cagnotte) VALUES(:id_demande, :montant, :acceptation, :id_compte, :id_cagnotte)");
+    query.prepare("INSERT INTO demande (id_demande, montant, acceptation, id_compte, id_cagnotte) VALUES(:id_demande, :montant, :acceptation, :id_compte, :id_cagnotte);");
     query.bindValue(":id_demande", id_demande);
     query.bindValue(":montant", montant);
     query.bindValue(":acceptation", 0);
@@ -122,7 +122,7 @@ void GestionnaireBDD::ajouterAcceptation(int id_demande, int id_compte, bool res
 {
     QSqlQuery query;
 
-    query.prepare("INSERT INTO acceptation(id_demande, id_compte, result) VALUES(:id_demande, :id_compte, :result)");
+    query.prepare("INSERT INTO acceptation(id_demande, id_compte, result) VALUES(:id_demande, :id_compte, :result);");
     query.bindValue(":id_demande", id_demande);
     query.bindValue(":id_compte", id_compte);
     query.bindValue(":result", result);
@@ -135,7 +135,7 @@ void GestionnaireBDD::hardReset()
 {
     QSqlQuery query;
 
-    if(!query.exec("DELETE FROM compte"))
+    if(!query.exec("DELETE FROM compte;"))
         qWarning() << "GestionnaireBDD::chercheAlex - ERROR: " << query.lastError().text();
 }
 
@@ -143,7 +143,7 @@ void GestionnaireBDD::chercheAlex()
 {
     QSqlQuery query;
 
-    if(!query.exec("SELECT id, nom, prenom, mdp FROM compte"))
+    if(!query.exec("SELECT id, nom, prenom, mdp FROM compte;"))
         qWarning() << "GestionnaireBDD::chercheAlex - ERROR: " << query.lastError().text();
     else
     {
@@ -156,7 +156,7 @@ int GestionnaireBDD::lastIdCompte()
 {
     QSqlQuery query;
     int value = -1;
-    if (!query.exec("SELECT MAX(id) FROM compte"))
+    if (!query.exec("SELECT MAX(id) FROM compte;"))
         qWarning() << "GestionnaireBDD::lastIdCompte - ERROR: " << query.lastError().text();
     else
     {
@@ -171,7 +171,7 @@ int GestionnaireBDD::lastIdCagnotte()
 {
     QSqlQuery query;
     int value = -1;
-    if (!query.exec("SELECT MAX(id_cagnotte) FROM cagnotte"))
+    if (!query.exec("SELECT MAX(id_cagnotte) FROM cagnotte;"))
         qWarning() << "GestionnaireBDD::lastIdCagnotte - ERROR: " << query.lastError().text();
     else
     {
@@ -186,7 +186,7 @@ int GestionnaireBDD::lastIdDemande()
 {
     QSqlQuery query;
     int value = -1;
-    if (!query.exec("SELECT MAX(id_demande) FROM demande"))
+    if (!query.exec("SELECT MAX(id_demande) FROM demande;"))
         qWarning() << "GestionnaireBDD::lastIdCagnotte - ERROR: " << query.lastError().text();
     else
     {
@@ -202,7 +202,7 @@ bool GestionnaireBDD::acceptationExist(int id_demande, int id_compte)
     QSqlQuery query;
     bool exist = false;
 
-    query.prepare("SELECT COUNT(*) FROM acceptation WHERE id_demande=:id_demande AND id_compte=:id_compte");
+    query.prepare("SELECT COUNT(*) FROM acceptation WHERE id_demande=:id_demande AND id_compte=:id_compte;");
     query.bindValue(":id_demande", id_demande);
     query.bindValue(":id_compte", id_compte);
 
@@ -224,7 +224,7 @@ int GestionnaireBDD::nbCompte()
 {
     QSqlQuery query;
     int value = 0;
-    if (!query.exec("SELECT COUNT(*) FROM compte"))
+    if (!query.exec("SELECT COUNT(*) FROM compte;"))
         qWarning() << "GestionnaireBDD::nbCompte - ERROR: " << query.lastError().text();
     else
     {
@@ -239,7 +239,7 @@ QVector<QVector<QString>> GestionnaireBDD::getCompteBdd()
     QSqlQuery query;
     QVector<QVector<QString>> comptes;
 
-    if (!query.exec("SELECT id, nom, prenom, mdp, montant FROM compte"))
+    if (!query.exec("SELECT id, nom, prenom, mdp, montant FROM compte;"))
         qWarning() << "GestionnaireBDD::getCompte - ERROR: " << query.lastError().text();
     else
     {
@@ -262,7 +262,7 @@ QVector<QVector<QString>> GestionnaireBDD::getCagnotteBdd()
     QSqlQuery query;
     QVector<QVector<QString>> cagnottes;
 
-    if (!query.exec("SELECT id_cagnotte, nom_cagnotte, budget_cagnotte, id_createur FROM cagnotte"))
+    if (!query.exec("SELECT id_cagnotte, nom_cagnotte, budget_cagnotte, id_createur FROM cagnotte;"))
         qWarning() << "GestionnaireBDD::getCagnotte - ERROR: " << query.lastError().text();
     else
     {
@@ -284,7 +284,7 @@ QVector<int> GestionnaireBDD::getParticipation(int id_cagnotte)
     QSqlQuery query;
     QVector<int> participants;
 
-    query.prepare("SELECT id FROM participation WHERE id_cagnotte=:id_cagnotte");
+    query.prepare("SELECT id FROM participation WHERE id_cagnotte=:id_cagnotte;");
 
     query.bindValue(":id_cagnotte", id_cagnotte);
 
@@ -305,7 +305,7 @@ QVector<QVector<int>> GestionnaireBDD::getDemande(int id_cagnotte)
     QSqlQuery query;
     QVector<QVector<int>> demandes;
 
-    query.prepare("SELECT id_demande, id_compte, montant, acceptation FROM demande WHERE id_cagnotte=:id_cagnotte");
+    query.prepare("SELECT id_demande, id_compte, montant, acceptation FROM demande WHERE id_cagnotte=:id_cagnotte;");
     query.bindValue(":id_cagnotte", id_cagnotte);
 
     if (!query.exec())
@@ -330,7 +330,7 @@ std::map<int, bool> GestionnaireBDD::getAcceptation(int id_demande)
     QSqlQuery query;
     std::map<int, bool> accepations;
 
-    query.prepare("SELECT id_compte, result FROM acceptation WHERE id_demande=:id_demande");
+    query.prepare("SELECT id_compte, result FROM acceptation WHERE id_demande=:id_demande;");
     query.bindValue(":id_demande", id_demande);
 
     if(!query.exec())
@@ -349,7 +349,7 @@ void GestionnaireBDD::updateMontantCagnotte(int id_cagnotte, int montant)
 {
     QSqlQuery query;
 
-    query.prepare("UPDATE cagnotte SET budget_cagnotte=:budget WHERE id_cagnotte=:id");
+    query.prepare("UPDATE cagnotte SET budget_cagnotte=:budget WHERE id_cagnotte=:id;");
     query.bindValue(":budget", montant);
     query.bindValue(":id", id_cagnotte);
 
@@ -361,7 +361,7 @@ void GestionnaireBDD::updateNomCagnotte(int id_cagnotte, std::string nom)
 {
     QSqlQuery query;
 
-    query.prepare("UPDATE cagnotte SET nom_cagnotte=:nom WHERE id_cagnotte=:id");
+    query.prepare("UPDATE cagnotte SET nom_cagnotte=:nom WHERE id_cagnotte=:id;");
     query.bindValue(":nom", QString::fromStdString(nom));
     query.bindValue(":id", id_cagnotte);
 
@@ -373,7 +373,7 @@ void GestionnaireBDD::updateMontantCompte(int id_compte, int montant)
 {
     QSqlQuery query;
 
-    query.prepare("UPDATE compte SET montant=:montant WHERE id=:id");
+    query.prepare("UPDATE compte SET montant=:montant WHERE id=:id;");
     query.bindValue(":montant", montant);
     query.bindValue(":id", id_compte);
 
@@ -385,7 +385,7 @@ void GestionnaireBDD::updateAcceptationDemande(int id_demande, int acceptations)
 {
     QSqlQuery query;
 
-    query.prepare("UPDATE demande SET acceptation=:acceptation WHERE id_demande=:id_demande");
+    query.prepare("UPDATE demande SET acceptation=:acceptation WHERE id_demande=:id_demande;");
     query.bindValue(":acceptation", acceptations);
     query.bindValue(":id_demande", id_demande);
 
@@ -397,7 +397,7 @@ void GestionnaireBDD::updateAcceptation(int id_demande, int id_compte, bool resu
 {
     QSqlQuery query;
 
-    query.prepare("UPDATE acceptation SET result=:result WHERE id_demande=:id_demande AND id_compte=:id_compte");
+    query.prepare("UPDATE acceptation SET result=:result WHERE id_demande=:id_demande AND id_compte=:id_compte;");
     query.bindValue(":result", result);
     query.bindValue(":id_demande", id_demande);
     query.bindValue(":id_compte", id_compte);
@@ -410,7 +410,7 @@ void GestionnaireBDD::deleteCagnotte(int id_cagnotte)
 {
     QSqlQuery queryDeleteParticipation;
 
-    queryDeleteParticipation.prepare("DELETE FROM participation WHERE id_cagnotte=:id_cagnotte");
+    queryDeleteParticipation.prepare("DELETE FROM participation WHERE id_cagnotte=:id_cagnotte;");
     queryDeleteParticipation.bindValue(":id_cagnotte", id_cagnotte);
 
     if(!queryDeleteParticipation.exec())
@@ -418,7 +418,7 @@ void GestionnaireBDD::deleteCagnotte(int id_cagnotte)
 
     QSqlQuery queryCagnotte;
 
-    queryCagnotte.prepare("DELETE FROM cagnotte WHERE id_cagnotte=:id_cagnotte");
+    queryCagnotte.prepare("DELETE FROM cagnotte WHERE id_cagnotte=:id_cagnotte;");
     queryCagnotte.bindValue(":id_cagnotte", id_cagnotte);
 
     if(!queryCagnotte.exec())
@@ -429,7 +429,7 @@ void GestionnaireBDD::deleteDemande(int id_demande)
 {
     QSqlQuery queryDeleteAcceptation;
 
-    queryDeleteAcceptation.prepare("DELETE FROM acceptation WHERE id_demande=:id_demande");
+    queryDeleteAcceptation.prepare("DELETE FROM acceptation WHERE id_demande=:id_demande;");
     queryDeleteAcceptation.bindValue(":id_demande", id_demande);
 
     if(!queryDeleteAcceptation.exec())
@@ -437,7 +437,7 @@ void GestionnaireBDD::deleteDemande(int id_demande)
 
     QSqlQuery queryDemande;
 
-    queryDemande.prepare("DELETE FROM demande WHERE id_demande=:id_demande");
+    queryDemande.prepare("DELETE FROM demande WHERE id_demande=:id_demande;");
     queryDemande.bindValue(":id_demande", id_demande);
 
     if(!queryDemande.exec())
