@@ -62,6 +62,11 @@ bool ShareCount::isCagnotteSelected()
     return m_gestionnaireGroupe->cagnotteIsSelected();
 }
 
+bool ShareCount::isCompteSelected()
+{
+    return m_gestionnaireCompte->isCompteSelected();
+}
+
 int ShareCount::trouverCompte(std::string nom, std::string prenom){
     return m_gestionnaireCompte->trouverCompte(nom, prenom);
 }

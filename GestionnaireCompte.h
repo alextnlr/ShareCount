@@ -55,6 +55,8 @@ public:
      */
     int trouverCompte(std::string nom, std::string prenom);
 
+    bool isCompteSelected();
+
     /**
      * Destructeur par défaut
      */

@@ -19,6 +19,7 @@ public:
     void addToCagnotte(int montant);
     void renameCagnotte(std::string nom);
     bool isCagnotteSelected();
+    bool isCompteSelected();
     int trouverCompte(std::string nom, std::string prenom);
     void addParticipant(Compte* compte);
     Compte* getCompte(int id);

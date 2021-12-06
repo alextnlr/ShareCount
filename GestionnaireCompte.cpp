@@ -39,11 +39,11 @@ int GestionnaireCompte::creation_compte(std::string *informations) {
 
 int GestionnaireCompte::connexion(std::string *informations) {
     int result = 1; // Si on ne trouve aucun compte, on retournera 1
+
     if (verification_client(informations)){
         //std::map<int, Compte*>::iterator it = m_comptes.begin(); //Itérateur des comptes enregistrés
         bool continu = true;
-
-        for (auto const& i : m_comptes){
+        for (const auto& i : m_comptes){
             if (continu){
                 if (i.second->getNom() == informations[0] && i.second->getPrenom() == informations[1] && i.second->getmdp() == informations[2]){
                     m_compte_co = i.second->getIdentifiant();
@@ -59,6 +59,11 @@ int GestionnaireCompte::connexion(std::string *informations) {
 
 Compte* GestionnaireCompte::compte_connecte() {
     return m_comptes.at(m_compte_co);
+}
+
+bool GestionnaireCompte::isCompteSelected()
+{
+    return m_compte_co != 0;
 }
 
 Compte* GestionnaireCompte::getCompte(int i)

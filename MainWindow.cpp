@@ -32,18 +32,23 @@ void MainWindow::update() {
     ui->groupList->clear();
     ui->participantList->clear();
 
-    std::map<int, Cagnotte*> cagnottes = m_shareCount.getNomGroupes();
-    for (const auto& nom : cagnottes) {
-        if (nom.second->participe(m_shareCount.getCurrentCompte()->getIdentifiant()))
-        {
-            QListWidgetItem* item = new QListWidgetItem;
-            if(nom.second->getIdCreateur() == m_shareCount.getCurrentCompte()->getIdentifiant())
-                item->setText(QString::fromStdString(nom.second->getNom()) + " (Createur)");
-            else
-                item->setText(QString::fromStdString(nom.second->getNom()));
-            item->setData(Qt::UserRole, nom.second->getIdCagnotte());
-            ui->groupList->addItem(item);
+    if(m_shareCount.isCompteSelected())
+    {
+        std::map<int, Cagnotte*> cagnottes = m_shareCount.getNomGroupes();
+        for (const auto& nom : cagnottes) {
+            if (nom.second->participe(m_shareCount.getCurrentCompte()->getIdentifiant()))
+            {
+                QListWidgetItem* item = new QListWidgetItem;
+                if(nom.second->getIdCreateur() == m_shareCount.getCurrentCompte()->getIdentifiant())
+                    item->setText(QString::fromStdString(nom.second->getNom()) + " (Createur)");
+                else
+                    item->setText(QString::fromStdString(nom.second->getNom()));
+                item->setData(Qt::UserRole, nom.second->getIdCagnotte());
+                ui->groupList->addItem(item);
+            }
         }
+        QString montant = QString::number(m_shareCount.getCurrentCompte()->getMontant());
+        ui->labelSolde->setText("Solde : " + montant + "€");
     }
 
     if(m_shareCount.isCagnotteSelected())
@@ -108,9 +113,6 @@ void MainWindow::update() {
         }
 
     }
-
-    QString montant = QString::number(m_shareCount.getCurrentCompte()->getMontant());
-    ui->labelSolde->setText("Solde : " + montant + "€");
 }
 
 void MainWindow::on_pushButtonCreationCompte_clicked()
