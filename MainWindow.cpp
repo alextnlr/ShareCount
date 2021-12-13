@@ -5,8 +5,6 @@
 #include "ui_mainwindow.h"
 
 
-
-
 MainWindow::MainWindow(ShareCount& shareCount, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -34,6 +32,7 @@ void MainWindow::update() {
 
     if(m_shareCount.isCompteSelected())
     {
+        ui->labelNomActu->setText(QString::fromStdString(m_shareCount.getCurrentCompte()->getPrenom()));
         std::map<int, Cagnotte*> cagnottes = m_shareCount.getNomGroupes();
         for (const auto& nom : cagnottes) {
             if (nom.second->participe(m_shareCount.getCurrentCompte()->getIdentifiant()))

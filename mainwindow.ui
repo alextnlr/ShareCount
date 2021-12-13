@@ -144,8 +144,8 @@
      <widget class="QWidget" name="gridLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>50</y>
+        <x>50</x>
+        <y>80</y>
         <width>681</width>
         <height>491</height>
        </rect>
@@ -191,6 +191,19 @@
         </layout>
        </item>
       </layout>
+     </widget>
+     <widget class="QLabel" name="labelNomActu">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>20</y>
+        <width>501</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="page_3">
@@ -390,6 +403,24 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>lineEditNom</tabstop>
+  <tabstop>lineEditPrenom</tabstop>
+  <tabstop>lineEdit_MdP</tabstop>
+  <tabstop>pushButtonConnexion</tabstop>
+  <tabstop>pushButtonCreationCompte</tabstop>
+  <tabstop>goToGroup</tabstop>
+  <tabstop>groupList</tabstop>
+  <tabstop>buttonAddMontant</tabstop>
+  <tabstop>buttonCreerCagnotte</tabstop>
+  <tabstop>pushButtonBackCagnotte</tabstop>
+  <tabstop>pushButtonAddParticipants</tabstop>
+  <tabstop>pushButtonAddMoney</tabstop>
+  <tabstop>participantList</tabstop>
+  <tabstop>pushButtonCreerDemande</tabstop>
+  <tabstop>listWidgetDemandes</tabstop>
+  <tabstop>pushButtonRepondre</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
