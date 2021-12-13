@@ -43,13 +43,53 @@ public:
      * @param cagnotte Groupe sur lequel on travaille
      */
     void setGroupCurrent(Cagnotte *cagnotte);
+
+    /**
+     * @brief getCagnotte Retourne une cagnotte précise
+     * @param id_cagnotte Id de la cagnotte à retourner
+     * @return la cagnotte
+     */
     Cagnotte* getCagnotte(int id_cagnotte);
+
+    /**
+     * @brief getGroupCurrent Retourne la cagnotte sur laquelle on travaille actuellement
+     * @return La cagnotte courante
+     */
     Cagnotte* getGroupCurrent();
+
+    /**
+     * @brief addToCagnotte Ajoute de l'argent à la cagnotte courante
+     * @param montant montant à ajouter
+     */
     void addToCagnotte(int montant);
+
+    /**
+     * @brief cagnotteIsSelected Indique si une cagnotte est actuellement sélectionnée
+     * @return true si une cagnotte est sélectionnée
+     */
     bool cagnotteIsSelected();
+
+    /**
+     * @brief addParticipant Ajoute un participant à la cagnotte courante
+     * @param compte Compte à ajouter
+     */
     void addParticipant(Compte* compte);
+
+    /**
+     * @brief updateNomCagnotte Modifie le nom de la cagnotte actuelle
+     * @param nom Nouveau nom
+     */
     void updateNomCagnotte(std::string nom);
+
+    /**
+     * @brief deleteCagnotte Supprime une cagnotte en particulier
+     * @param id_cagnotte identifiant de la cagnotte à supprimer
+     */
     void deleteCagnotte(int id_cagnotte);
+
+    /**
+     * @brief Destructeur par défaut
+     */
     ~GestionnaireGroupe();
 private:
     std::map<int, Cagnotte*> m_groupes;

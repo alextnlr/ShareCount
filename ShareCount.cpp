@@ -18,9 +18,8 @@ int ShareCount::connexion(std::string *informations){
     return m_gestionnaireCompte->connexion(informations);
 }
 
-int ShareCount::creerCagnotte(std::string nom) {
+void ShareCount::creerCagnotte(std::string nom) {
     m_gestionnaireGroupe->addCagnotte(nom, m_gestionnaireCompte->compte_connecte());
-    return 0;
 }
 
 void ShareCount::setCurrentGroup(int id_cagnotte){
