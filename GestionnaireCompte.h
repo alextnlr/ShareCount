@@ -1,3 +1,6 @@
+/**
+ * @brief Classe qui stocke et gère l'intégralité des comptes connues
+ */
 #ifndef SHARECOUNT_GESTIONNAIRECOMPTE_H
 #define SHARECOUNT_GESTIONNAIRECOMPTE_H
 
@@ -31,6 +34,9 @@ public:
      */
     int connexion(std::string* informations);
 
+    /**
+     * @brief recopieBDD Recopie les données de la BDD dans la collection de compte
+     */
     void recopieBDD();
 
     /**

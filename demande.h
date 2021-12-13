@@ -1,3 +1,6 @@
+/**
+ * @brief Représente les demandes de retrait d'argent d'une cagnotte
+ */
 #ifndef DEMANDE_H
 #define DEMANDE_H
 
