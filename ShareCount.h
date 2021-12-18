@@ -47,18 +47,86 @@ public:
      * @return
      */
     std::map<int, Cagnotte*> getNomGroupes();
+
+    /**
+     * @brief setCurrentGroup Change le groupe actuel
+     * @param id_cagnotte Identifiant du groupe
+     */
     void setCurrentGroup(int id_cagnotte);
+
+    /**
+     * @brief getCurrentGroup Renvoie une réference au groupe actuel
+     * @return Référence au groupe actuel
+     */
     Cagnotte* getCurrentGroup();
+
+    /**
+     * @brief addToCagnotte Ajoute un montant à la cagnotte actuel
+     * @param montant Montant à ajouter
+     */
     void addToCagnotte(int montant);
+
+    /**
+     * @brief renameCagnotte Renomme la cagnotte
+     * @param nom Nouveau nom
+     */
     void renameCagnotte(std::string nom);
+
+    /**
+     * @brief isCagnotteSelected Test s'il y a une cagnotte selected
+     * @return True si une cagnotte est selectionné, false sinon
+     */
     bool isCagnotteSelected();
+
+    /**
+     * @brief isCompteSelected Test si un compte est selectionné
+     * @return True su un compte est sélectionné
+     */
     bool isCompteSelected();
+
+    /**
+     * @brief trouverCompte Renvoie l'identifiant d'un compte selon son nom et prenom
+     * @param nom Nom du compte
+     * @param prenom prenom du compte
+     * @return L'identifiant du compte trouvé, -1 sinon
+     */
     int trouverCompte(std::string nom, std::string prenom);
+
+    /**
+     * @brief addParticipant Ajoute un participant au groupe actuel
+     * @param compte Compte du nouveau participant
+     */
     void addParticipant(Compte* compte);
+
+    /**
+     * @brief getCompte Renvoie la référence au compte actuel
+     * @param id Identifiant du compte
+     * @return Référence au compte
+     */
     Compte* getCompte(int id);
+
+    /**
+     * @brief getCurrentCompte renvoie la référence au compte actuel
+     * @return Référence au compte actuel
+     */
     Compte* getCurrentCompte();
+
+    /**
+     * @brief crediterCompte Crédite le compte actuel
+     * @param montant Montant à créditer
+     */
     void crediterCompte(int montant);
+
+    /**
+     * @brief ajouterDemande Ajoute une demande de la part du compte actuel sur la cagnotte actuelle
+     * @param montant Montant de la demande
+     */
     void ajouterDemande(int montant);
+
+    /**
+     * @brief deleteCagnotte Supprime un groupe
+     * @param id_cagnotte identifiant de la cagnotte
+     */
     void deleteCagnotte(int id_cagnotte);
     ~ShareCount();
 
